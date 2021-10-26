@@ -23,18 +23,30 @@ active
         <div class="card pd-20 pd-sm-40 form-layout form-layout-4">
             <h6 class="card-body-title">Add a Shop</h6>
             <p class="mg-b-20 mg-sm-b-30">One Email can hold only one shop<span class="tx-danger">*</span></p>
-
-  
-
+            
             <form action="{{ route('shops.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 
             <div class="row">
-                <label class="col-sm-4 form-control-label" id="name">Shop Name:<span class="tx-danger">*</span></label>
+                <label class="col-sm-4 form-control-label" id="woner_name">
+                    Owner Name:<span class="tx-danger">*</span>
+                </label>
                 <div class="col-sm-8 mg-t-10 mg-sm-t-0">
-                    <input type="text" for="name" name="name" class="form-control" placeholder="Shop name">
+                    <input type="text" for="owner_name" name="owner_name" class="form-control" placeholder="Shop name">
                 </div>
-                @error('name')
+                @error('owner_name')
+                <span class="text-danger">{{$message}}</span>
+                @enderror
+            </div>
+
+            <div class="row mg-t-20">
+                <label class="col-sm-4 form-control-label" id="shop_name">
+                    Shop Name:<span class="tx-danger">*</span>
+                </label>
+                <div class="col-sm-8 mg-t-10 mg-sm-t-0">
+                    <input type="text" for="shop_name" name="shop_name" class="form-control" placeholder="Shop name">
+                </div>
+                @error('shop_name')
                 <span class="text-danger">{{$message}}</span>
                 @enderror
             </div>
@@ -51,11 +63,11 @@ active
             </div>
 
             <div class="row mg-t-20">
-                <label class="col-sm-4 form-control-label" for="phone">Phone: <span class="tx-danger">*</span></label>
+                <label class="col-sm-4 form-control-label" for="phone_number">Phone: <span class="tx-danger">*</span></label>
                 <div class="col-sm-8 mg-t-10 mg-sm-t-0">
-                    <input for="phone" name="phone" type="text" class="form-control" placeholder="Phone">
+                    <input for="phone_number" name="phone_number" type="text" class="form-control" placeholder="Phone">
                 </div>
-                @error('phone')
+                @error('phone_number')
                 <span class="text-danger">{{$message}}</span>
                 @enderror
             </div>

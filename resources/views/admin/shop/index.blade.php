@@ -67,20 +67,24 @@ active
 @endif
 
 
-<div class="row">
+<div class="row ">
 
     @foreach ($shops as $shop)
-    <div class="col-lg-4 col-md-6">
+    <div class="col-lg-4 col-sm-6" style="margin-top: 30px">
         <div class="card pd-20 pd-sm-40">
-            <h6 class="card-body-title text-center">{{ $shop->name }}</h6>
+            <a href="{{ route('products.index')}}">
+                <h6 class="card-body-title text-center">{{ $shop->shop_name }}</h6>
+            </a>
+            <br>
             <div class="card bd-0 ">
-                <img class="card-img-top img-fluid" src="{{ asset('uploads/shop')}}/{{ $shop->image }}" alt="Image">
+                <a href="{{ route('products.index')}}">
+                    <img style="max-height: 120px; object-fit: cover;" class="card-img-top img-fluid" src="{{ asset('uploads/shop')}}/{{ $shop->image }}" alt="Image">
+                </a>
+                
             </div>
         </div><!-- card -->
     </div>
     @endforeach
-
-
 </div>
 
 

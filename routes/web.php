@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AdminProductController;
 use App\Http\Controllers\ShopController;
 use Illuminate\Support\Facades\Route;
 
@@ -27,6 +28,10 @@ Route::group(['prefix' => 'admin','middleware' => 'auth', 'middleware' => 'Check
     
     //Shop Controller
     Route::resource('shops', ShopController::class);
+
+
+    //Admin Product Controller
+    Route::resource('products', AdminProductController::class);
 
 });
 

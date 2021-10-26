@@ -41,9 +41,10 @@ class ShopController extends Controller
     {
         $request->validate([
 
-            'name'        => 'required',
+            'shop_name'   => 'required',
+            'owner_name'  => 'required',
             'email'       => 'required|unique:users',
-            'phone'       => 'required',
+            'phone_number'       => 'required',
             'address'     => 'required',
             'domain_name' => 'required',
             'image'       => 'required|image',
@@ -52,7 +53,7 @@ class ShopController extends Controller
 
       
         $reg = new User();
-        $reg->name = $request->name;
+        $reg->name = $request->owner_name;
         $reg->email = $request->email;
         $reg->password = bcrypt('@@Bladepro@123@@');
         $reg->save();
