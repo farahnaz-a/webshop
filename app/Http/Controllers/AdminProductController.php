@@ -14,7 +14,7 @@ class AdminProductController extends Controller
      */
     public function index()
     {
-        return view('admin.shop_details.product.index');
+        return view('shop_owner.products.index');
     }
 
     /**

@@ -19,7 +19,7 @@ class CheckAdmin
     {
         if(Auth::user()->role != 'admin')
         {
-            return redirect()->route('reporter.dashboard');;
+            return redirect()->route('shop_owner.dashboard');;
         }
 
         return $next($request);

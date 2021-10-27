@@ -1,4 +1,4 @@
-@extends('admin.dashboard')
+@extends('shop_owner.dashboard')
 
 
 @section('title')
@@ -105,8 +105,6 @@ active
                     </div>
                 </div>
             </div>
-
-
             <div class="col-lg-4 col-sm-6">
                 <div class="card" style="width: 18rem;">
                     <div class="card-body">
@@ -123,5 +121,4 @@ active
         </div>
     </form>
 </div>
-
 @endsection

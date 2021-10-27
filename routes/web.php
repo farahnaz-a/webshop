@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AdminProductController;
 use App\Http\Controllers\ShopController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -32,6 +33,15 @@ Route::group(['prefix' => 'admin','middleware' => 'auth', 'middleware' => 'Check
 
     //Admin Product Controller
     Route::resource('products', AdminProductController::class);
+
+});
+
+
+
+//Admin Controller
+Route::group(['prefix' => 'user','middleware' => 'auth'], function(){
+
+    Route::get('/dashboard', [UserController::class, 'index'])->name('shop_owner.dashboard');
 
 });
 
