@@ -76,7 +76,7 @@
            
 
             <label class="sidebar-label">Product</label>
-            <a href="" class="sl-menu-link @yield('shop')">
+            <a href="{{ route('userProducts.index') }}" class="sl-menu-link @yield('shop')">
                 <div class="sl-menu-item">
                     <i class="fa fa-bank"></i>
                     <span class="menu-item-label">Product</span>

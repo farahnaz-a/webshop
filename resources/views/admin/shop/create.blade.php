@@ -32,7 +32,7 @@ active
                     Owner Name:<span class="tx-danger">*</span>
                 </label>
                 <div class="col-sm-8 mg-t-10 mg-sm-t-0">
-                    <input type="text" for="owner_name" name="owner_name" class="form-control" placeholder="Shop name">
+                    <input type="text" for="owner_name" name="owner_name" class="form-control" placeholder="Woner name">
                 </div>
                 @error('owner_name')
                 <span class="text-danger">{{$message}}</span>

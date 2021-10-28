@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
-
+use App\Models\ProductExtra;
+use App\Models\Shop;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
-class AdminProductController extends Controller
+class ProductExtraController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +16,7 @@ class AdminProductController extends Controller
      */
     public function index()
     {
-        return view('shop_owner.products.index');
+        //
     }
 
     /**
@@ -35,27 +37,35 @@ class AdminProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'extras_name'  => 'required|unique:product_extras',
+            'price' => 'required',
+        ]);
+
+        $data = ProductExtra::create($request->except('_token') + ['created_at' => Carbon::now()]);
+        $shop_name = Shop::find($request->shop_id)->pluck('shop_name');
+        
+        return redirect()->route('userProducts.index')->with('category_success','Add Category Successfully');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\AdminProduct  $adminProduct
+     * @param  \App\Models\ProductExtra  $productExtra
      * @return \Illuminate\Http\Response
      */
-    public function show()
+    public function show(ProductExtra $productExtra)
     {
-        //
+        
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\AdminProduct  $adminProduct
+     * @param  \App\Models\ProductExtra  $productExtra
      * @return \Illuminate\Http\Response
      */
-    public function edit()
+    public function edit(ProductExtra $productExtra)
     {
         //
     }
@@ -64,10 +74,10 @@ class AdminProductController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\AdminProduct  $adminProduct
+     * @param  \App\Models\ProductExtra  $productExtra
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request)
+    public function update(Request $request, ProductExtra $productExtra)
     {
         //
     }
@@ -75,10 +85,10 @@ class AdminProductController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\AdminProduct  $adminProduct
+     * @param  \App\Models\ProductExtra  $productExtra
      * @return \Illuminate\Http\Response
      */
-    public function destroy()
+    public function destroy(ProductExtra $productExtra)
     {
         //
     }

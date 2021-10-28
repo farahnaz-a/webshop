@@ -44,7 +44,7 @@ class ShopController extends Controller
             'shop_name'   => 'required',
             'owner_name'  => 'required',
             'email'       => 'required|unique:users',
-            'phone_number'       => 'required',
+            'phone_number'=> 'required',
             'address'     => 'required',
             'domain_name' => 'required',
             'image'       => 'required|image',
