@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 25, 2021 at 09:19 PM
+-- Generation Time: Oct 28, 2021 at 08:51 PM
 -- Server version: 10.4.20-MariaDB
 -- PHP Version: 8.0.8
 
@@ -20,6 +20,50 @@ SET time_zone = "+00:00";
 --
 -- Database: `restaurant_app`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `categories`
+--
+
+CREATE TABLE `categories` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `image` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `shop_id` bigint(20) UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `categories`
+--
+
+INSERT INTO `categories` (`id`, `name`, `image`, `shop_id`, `created_at`, `updated_at`) VALUES
+(14, 'Chicken', '14.jpg', 2, '2021-10-28 09:46:07', '2021-10-28 09:46:07'),
+(15, 'Wings', '15.jpg', 2, '2021-10-28 09:46:47', '2021-10-28 09:46:47');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `extras`
+--
+
+CREATE TABLE `extras` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `product_id` bigint(20) NOT NULL,
+  `extras_id` bigint(20) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `extras`
+--
+
+INSERT INTO `extras` (`id`, `product_id`, `extras_id`, `created_at`, `updated_at`) VALUES
+(1, 1, 2, '2021-10-28 10:39:56', '2021-10-28 10:39:56');
 
 -- --------------------------------------------------------
 
@@ -60,7 +104,11 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (5, '2019_12_14_000001_create_personal_access_tokens_table', 1),
 (6, '2021_10_25_122425_create_sessions_table', 1),
 (9, '2014_10_12_000000_create_users_table', 2),
-(10, '2021_10_25_132031_create_shops_table', 3);
+(14, '2021_10_28_095750_create_categories_table', 6),
+(15, '2021_10_25_132031_create_shops_table', 7),
+(18, '2021_10_28_150211_create_product_extras_table', 8),
+(20, '2021_10_28_161328_create_extras_table', 10),
+(21, '2021_10_28_161111_create_products_table', 11);
 
 -- --------------------------------------------------------
 
@@ -95,6 +143,55 @@ CREATE TABLE `personal_access_tokens` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `products`
+--
+
+CREATE TABLE `products` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `product_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `details` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `image` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `size` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `price` double(8,2) NOT NULL,
+  `shop_id` bigint(20) UNSIGNED NOT NULL,
+  `category_id` bigint(20) UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `products`
+--
+
+INSERT INTO `products` (`id`, `product_name`, `details`, `image`, `size`, `price`, `shop_id`, `category_id`, `created_at`, `updated_at`) VALUES
+(1, 'Chicken', 'sadgasdg', '1.jpg', 'medium', 3.80, 2, 14, '2021-10-28 10:39:56', '2021-10-28 10:39:56');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `product_extras`
+--
+
+CREATE TABLE `product_extras` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `extras_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `price` double(8,2) NOT NULL,
+  `shop_id` bigint(20) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `product_extras`
+--
+
+INSERT INTO `product_extras` (`id`, `extras_name`, `price`, `shop_id`, `created_at`, `updated_at`) VALUES
+(1, 'Sosa', 3.80, 2, '2021-10-28 10:02:33', '2021-10-28 10:02:33'),
+(2, 'Catch up', 7.49, 2, '2021-10-28 10:04:09', '2021-10-28 10:04:09');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `sessions`
 --
 
@@ -112,8 +209,35 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('HHSwxFEGVILjeJLPeSCQeq2oM3gX4bxYyaKJQ1L1', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.54 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoiSjhzRTBoUElnZE5aR2tqZDhHaWNhMGJXNTd1U0UycWdjVHRlVFF0bCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzM6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9hZG1pbi9zaG9wcyI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6NTA6ImxvZ2luX3dlYl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjE7czoxNzoicGFzc3dvcmRfaGFzaF93ZWIiO3M6NjA6IiQyeSQxMCQ0VzZBZkNsS0J5NzhYSGdlV2lHdDVlYmlBcGRhdnlmZzJaTGhRUXZlRjNXaEVDbFVNYjVGLiI7fQ==', 1635189262),
-('s5dU8u0Td1gicX7IJaDcMuaeAch3xAwJ4bdDcf08', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.54 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoiUlhMU2FDN1lxeWkyZWVaOEV1VDN6R1J6N1U2eGt3N3lFM1NncGw2SiI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzM6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9hZG1pbi9zaG9wcyI7fXM6NTA6ImxvZ2luX3dlYl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjE7czoxNzoicGFzc3dvcmRfaGFzaF93ZWIiO3M6NjA6IiQyeSQxMCQ0VzZBZkNsS0J5NzhYSGdlV2lHdDVlYmlBcGRhdnlmZzJaTGhRUXZlRjNXaEVDbFVNYjVGLiI7fQ==', 1635179820);
+('qcMwExRn5UYoQOxRBjXwCsJ7vq6iAJA43EVhyvh4', 13, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.54 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoiclhoNzNlWjVIM1A0OFUyZUt3RnY2N25jYnNtQWE5YjQxSUhPNWlGNSI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDA6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC91c2VyL3Nob3AvcHJvZHVjdHMiO31zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToxMztzOjE3OiJwYXNzd29yZF9oYXNoX3dlYiI7czo2MDoiJDJ5JDEwJFR1RlJSdGViV0x1VVFWOTBQUVVXYWVmUVIzVW5oZjBuRDlkUUVnUkhnNDdaSDB3SGhoTWx5Ijt9', 1635439196);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `shops`
+--
+
+CREATE TABLE `shops` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `owner_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `shop_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `domain_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `image` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `phone_number` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `address` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `details` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `user_id` bigint(20) UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `shops`
+--
+
+INSERT INTO `shops` (`id`, `owner_name`, `shop_name`, `domain_name`, `image`, `email`, `phone_number`, `address`, `details`, `user_id`, `created_at`, `updated_at`) VALUES
+(2, 'Raktim', 'KFC', 'kfc.com', '2shop.jpg', 'kfc@admin.com', '01403368205', 'adarsho para', 'sxafgasdfdfasdf', 13, '2021-10-28 09:27:56', '2021-10-28 09:27:56');
 
 -- --------------------------------------------------------
 
@@ -141,14 +265,23 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `role`, `remember_token`, `current_team_id`, `profile_photo_path`, `created_at`, `updated_at`) VALUES
 (1, 'Admin', 'admin@admin.com', NULL, '$2y$10$4W6AfClKBy78XHgeWiGt5ebiApdavyfg2ZLhQQveF3WhEClUMb5F.', 'admin', NULL, NULL, NULL, '2021-10-25 09:11:05', '2021-10-25 09:11:05'),
-(6, 'Shariar Raktim', 'raktim21cse@gmail.com', NULL, '$2y$10$KmBedkfQrLV/fOmOaCppWeK37yt6uPw8GkSkxitQOiu2pAHty55xe', 'shop_woner', NULL, NULL, NULL, '2021-10-25 10:29:00', '2021-10-25 10:29:00'),
-(7, 'Imtiaz', 'imtiaz@gmail.com', NULL, '$2y$10$w0SuDXdIIOPnTUcW8SjlVO1PJs3FES82SPfG9Z.WgrrPNdZhO3kz6', 'shop_woner', NULL, NULL, NULL, '2021-10-25 10:30:14', '2021-10-25 10:30:14'),
-(8, 'Maksudur', 'maksudur@gmail.com', NULL, '$2y$10$Mx61g8neqXCjNg.g20mBOOWtMMIc3XjzxiVemVxmZSi0m9A1zVKqu', 'shop_woner', NULL, NULL, NULL, '2021-10-25 10:32:58', '2021-10-25 10:32:58'),
-(9, 'Shariar Raktim', 'kdsjfgh@gmail.com', NULL, '$2y$10$v4cQGcJX46d1zzzw9K61xOdNzgFpLhyw8gv9MJI3yvPyXzgKGnWgm', 'shop_woner', NULL, NULL, NULL, '2021-10-25 10:37:00', '2021-10-25 10:37:00');
+(13, 'Raktim', 'kfc@admin.com', NULL, '$2y$10$TuFRRtebWLuUQV90PQUWaefQR3Unhf0nD9dQEgRHg47ZH0wHhhMly', 'shop_woner', NULL, NULL, NULL, '2021-10-28 09:27:56', '2021-10-28 09:27:56');
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `categories`
+--
+ALTER TABLE `categories`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `extras`
+--
+ALTER TABLE `extras`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `failed_jobs`
@@ -178,12 +311,31 @@ ALTER TABLE `personal_access_tokens`
   ADD KEY `personal_access_tokens_tokenable_type_tokenable_id_index` (`tokenable_type`,`tokenable_id`);
 
 --
+-- Indexes for table `products`
+--
+ALTER TABLE `products`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `product_extras`
+--
+ALTER TABLE `product_extras`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `sessions`
 --
 ALTER TABLE `sessions`
   ADD PRIMARY KEY (`id`),
   ADD KEY `sessions_user_id_index` (`user_id`),
   ADD KEY `sessions_last_activity_index` (`last_activity`);
+
+--
+-- Indexes for table `shops`
+--
+ALTER TABLE `shops`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `shops_user_id_foreign` (`user_id`);
 
 --
 -- Indexes for table `users`
@@ -197,6 +349,18 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT for table `categories`
+--
+ALTER TABLE `categories`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
+--
+-- AUTO_INCREMENT for table `extras`
+--
+ALTER TABLE `extras`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `failed_jobs`
 --
 ALTER TABLE `failed_jobs`
@@ -206,7 +370,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
@@ -215,10 +379,38 @@ ALTER TABLE `personal_access_tokens`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `products`
+--
+ALTER TABLE `products`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `product_extras`
+--
+ALTER TABLE `product_extras`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `shops`
+--
+ALTER TABLE `shops`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `shops`
+--
+ALTER TABLE `shops`
+  ADD CONSTRAINT `shops_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
