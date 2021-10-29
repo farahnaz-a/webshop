@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 28, 2021 at 08:51 PM
+-- Generation Time: Oct 29, 2021 at 05:09 PM
 -- Server version: 10.4.20-MariaDB
 -- PHP Version: 8.0.8
 
@@ -63,7 +63,11 @@ CREATE TABLE `extras` (
 --
 
 INSERT INTO `extras` (`id`, `product_id`, `extras_id`, `created_at`, `updated_at`) VALUES
-(1, 1, 2, '2021-10-28 10:39:56', '2021-10-28 10:39:56');
+(1, 1, 2, '2021-10-28 10:39:56', '2021-10-28 10:39:56'),
+(2, 2, 3, '2021-10-29 07:36:45', '2021-10-29 07:36:45'),
+(3, 3, 3, '2021-10-29 07:43:29', '2021-10-29 07:43:29'),
+(4, 4, 3, '2021-10-29 07:45:10', '2021-10-29 07:45:10'),
+(24, 6, 2, '2021-10-29 08:49:48', '2021-10-29 08:49:48');
 
 -- --------------------------------------------------------
 
@@ -164,7 +168,11 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`id`, `product_name`, `details`, `image`, `size`, `price`, `shop_id`, `category_id`, `created_at`, `updated_at`) VALUES
-(1, 'Chicken', 'sadgasdg', '1.jpg', 'medium', 3.80, 2, 14, '2021-10-28 10:39:56', '2021-10-28 10:39:56');
+(1, 'Chicken', 'sadgasdg', '1.jpg', 'medium', 3.80, 2, 14, '2021-10-28 10:39:56', '2021-10-28 10:39:56'),
+(2, 'Burgur', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', '2.jpg', 'medium', 20.50, 2, 15, '2021-10-29 07:36:45', '2021-10-29 07:36:45'),
+(3, 'Chicken Fry', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', '3.jpg', 'medium', 7.49, 2, 14, '2021-10-29 07:43:29', '2021-10-29 07:43:29'),
+(4, 'Chicken Ball', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', '4.png', 'medium', 20.50, 2, 15, '2021-10-29 07:45:10', '2021-10-29 07:45:10'),
+(6, 'Burgur king', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', '6.jpg', 'medium', 7.49, 2, 14, '2021-10-29 07:53:32', '2021-10-29 08:49:48');
 
 -- --------------------------------------------------------
 
@@ -187,7 +195,8 @@ CREATE TABLE `product_extras` (
 
 INSERT INTO `product_extras` (`id`, `extras_name`, `price`, `shop_id`, `created_at`, `updated_at`) VALUES
 (1, 'Sosa', 3.80, 2, '2021-10-28 10:02:33', '2021-10-28 10:02:33'),
-(2, 'Catch up', 7.49, 2, '2021-10-28 10:04:09', '2021-10-28 10:04:09');
+(2, 'Catch up', 7.49, 2, '2021-10-28 10:04:09', '2021-10-28 10:04:09'),
+(3, 'Munis', 5.00, 2, '2021-10-29 07:35:32', '2021-10-29 07:35:32');
 
 -- --------------------------------------------------------
 
@@ -209,7 +218,7 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('qcMwExRn5UYoQOxRBjXwCsJ7vq6iAJA43EVhyvh4', 13, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.54 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoiclhoNzNlWjVIM1A0OFUyZUt3RnY2N25jYnNtQWE5YjQxSUhPNWlGNSI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDA6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC91c2VyL3Nob3AvcHJvZHVjdHMiO31zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToxMztzOjE3OiJwYXNzd29yZF9oYXNoX3dlYiI7czo2MDoiJDJ5JDEwJFR1RlJSdGViV0x1VVFWOTBQUVVXYWVmUVIzVW5oZjBuRDlkUUVnUkhnNDdaSDB3SGhoTWx5Ijt9', 1635439196);
+('lkdnO6FnPq2rRmnXWvi9LjFp9QS8touyET7in9Vl', 13, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.54 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoiVG5DRWtFYjhCOGwzMDlTc3FLdFZwb2NGVnZqSWh1ZFAzZTRPWGh5ZyI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDA6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC91c2VyL3Nob3AvcHJvZHVjdHMiO31zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToxMztzOjE3OiJwYXNzd29yZF9oYXNoX3dlYiI7czo2MDoiJDJ5JDEwJFR1RlJSdGViV0x1VVFWOTBQUVVXYWVmUVIzVW5oZjBuRDlkUUVnUkhnNDdaSDB3SGhoTWx5Ijt9', 1635520124);
 
 -- --------------------------------------------------------
 
@@ -358,7 +367,7 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT for table `extras`
 --
 ALTER TABLE `extras`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -382,13 +391,13 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `product_extras`
 --
 ALTER TABLE `product_extras`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `shops`

@@ -58,11 +58,17 @@ class ProductController extends Controller
         $data->update();
 
 
-        $extras = new Extra();
+       
 
-        $extras->product_id = $data->id;
-        $extras->extras_id = $request->extras_id;
-        $extras->save();
+        foreach ($request->extras_id as $item) 
+        {
+         $extras = new Extra();
+         $extras->product_id = $data->id;
+         $extras->extras_id = $item;
+         $extras->save();
+        }
+        
+       
 
         return redirect()->route('userProducts.index')->with('product_success','Add Product Successfully');
     }
@@ -86,7 +92,7 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        //
+        
     }
 
     /**
@@ -96,9 +102,54 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Product $product)
+    public function update(Request $request, $id)
     {
-        //
+      
+        $request->validate([
+
+            'product_name' => 'required',
+            'details'      => 'required',
+            'size'         => 'required',
+            'price'        => 'required',
+            'category_id'  => 'required',
+        ]);
+
+
+        $data = Product::find($id);
+        $data->update($request->except(['_token','extras_id','image']) + ['updated_at' => Carbon::now()]);
+
+
+        $image = $request->file('image');
+
+        if($image)
+        {
+            $filename = $data->id .'.'. $image->extension('image');
+            $location = public_path('uploads/product');
+            $image->move($location,$filename);
+            $data->image = $filename;
+            $data->update();
+        }
+       
+
+       
+        $extra_delete = Extra::where('product_id',$data->id)->get();
+
+        foreach ($extra_delete as $value) {
+            $value->delete();
+        }
+        
+        foreach ($request->extras_id as $item) 
+        {
+         $extras = new Extra();
+         $extras->product_id = $data->id;
+         $extras->extras_id = $item;
+         $extras->save();
+        }
+
+       
+       
+
+        return redirect()->route('userProducts.index')->with('product_success','Add Product Successfully');
     }
 
     /**
@@ -107,8 +158,17 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Product $product)
+    public function destroy($id)
     {
-        //
+        $data = Product::find($id);
+        $data->delete();
+
+        $extra_delete = Extra::where('product_id',$id)->get();
+
+        foreach ($extra_delete as $value) {
+            $value->delete();
+        }
+
+        return redirect()->route('userProducts.index')->with('product_delete','Deleted Product Successfully');
     }
 }

@@ -9,4 +9,9 @@ class Extra extends Model
 {
     use HasFactory;
     protected $guarded = [];
+
+    function extra(){
+
+        return $this->belongsTo(ProductExtra::class, 'extras_id','id');
+    }
 }
