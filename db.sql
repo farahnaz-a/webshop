@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 29, 2021 at 05:09 PM
+-- Generation Time: Oct 30, 2021 at 11:09 AM
 -- Server version: 10.4.20-MariaDB
 -- PHP Version: 8.0.8
 
@@ -36,14 +36,6 @@ CREATE TABLE `categories` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
---
--- Dumping data for table `categories`
---
-
-INSERT INTO `categories` (`id`, `name`, `image`, `shop_id`, `created_at`, `updated_at`) VALUES
-(14, 'Chicken', '14.jpg', 2, '2021-10-28 09:46:07', '2021-10-28 09:46:07'),
-(15, 'Wings', '15.jpg', 2, '2021-10-28 09:46:47', '2021-10-28 09:46:47');
-
 -- --------------------------------------------------------
 
 --
@@ -57,17 +49,6 @@ CREATE TABLE `extras` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `extras`
---
-
-INSERT INTO `extras` (`id`, `product_id`, `extras_id`, `created_at`, `updated_at`) VALUES
-(1, 1, 2, '2021-10-28 10:39:56', '2021-10-28 10:39:56'),
-(2, 2, 3, '2021-10-29 07:36:45', '2021-10-29 07:36:45'),
-(3, 3, 3, '2021-10-29 07:43:29', '2021-10-29 07:43:29'),
-(4, 4, 3, '2021-10-29 07:45:10', '2021-10-29 07:45:10'),
-(24, 6, 2, '2021-10-29 08:49:48', '2021-10-29 08:49:48');
 
 -- --------------------------------------------------------
 
@@ -102,17 +83,17 @@ CREATE TABLE `migrations` (
 --
 
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
+(1, '2014_10_12_000000_create_users_table', 1),
 (2, '2014_10_12_100000_create_password_resets_table', 1),
 (3, '2014_10_12_200000_add_two_factor_columns_to_users_table', 1),
 (4, '2019_08_19_000000_create_failed_jobs_table', 1),
 (5, '2019_12_14_000001_create_personal_access_tokens_table', 1),
 (6, '2021_10_25_122425_create_sessions_table', 1),
-(9, '2014_10_12_000000_create_users_table', 2),
-(14, '2021_10_28_095750_create_categories_table', 6),
-(15, '2021_10_25_132031_create_shops_table', 7),
-(18, '2021_10_28_150211_create_product_extras_table', 8),
-(20, '2021_10_28_161328_create_extras_table', 10),
-(21, '2021_10_28_161111_create_products_table', 11);
+(7, '2021_10_25_132031_create_shops_table', 1),
+(8, '2021_10_28_095750_create_categories_table', 1),
+(9, '2021_10_28_150211_create_product_extras_table', 1),
+(10, '2021_10_28_161111_create_products_table', 1),
+(11, '2021_10_28_161328_create_extras_table', 1);
 
 -- --------------------------------------------------------
 
@@ -163,17 +144,6 @@ CREATE TABLE `products` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
---
--- Dumping data for table `products`
---
-
-INSERT INTO `products` (`id`, `product_name`, `details`, `image`, `size`, `price`, `shop_id`, `category_id`, `created_at`, `updated_at`) VALUES
-(1, 'Chicken', 'sadgasdg', '1.jpg', 'medium', 3.80, 2, 14, '2021-10-28 10:39:56', '2021-10-28 10:39:56'),
-(2, 'Burgur', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', '2.jpg', 'medium', 20.50, 2, 15, '2021-10-29 07:36:45', '2021-10-29 07:36:45'),
-(3, 'Chicken Fry', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', '3.jpg', 'medium', 7.49, 2, 14, '2021-10-29 07:43:29', '2021-10-29 07:43:29'),
-(4, 'Chicken Ball', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', '4.png', 'medium', 20.50, 2, 15, '2021-10-29 07:45:10', '2021-10-29 07:45:10'),
-(6, 'Burgur king', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', '6.jpg', 'medium', 7.49, 2, 14, '2021-10-29 07:53:32', '2021-10-29 08:49:48');
-
 -- --------------------------------------------------------
 
 --
@@ -188,15 +158,6 @@ CREATE TABLE `product_extras` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `product_extras`
---
-
-INSERT INTO `product_extras` (`id`, `extras_name`, `price`, `shop_id`, `created_at`, `updated_at`) VALUES
-(1, 'Sosa', 3.80, 2, '2021-10-28 10:02:33', '2021-10-28 10:02:33'),
-(2, 'Catch up', 7.49, 2, '2021-10-28 10:04:09', '2021-10-28 10:04:09'),
-(3, 'Munis', 5.00, 2, '2021-10-29 07:35:32', '2021-10-29 07:35:32');
 
 -- --------------------------------------------------------
 
@@ -218,7 +179,7 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('lkdnO6FnPq2rRmnXWvi9LjFp9QS8touyET7in9Vl', 13, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.54 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoiVG5DRWtFYjhCOGwzMDlTc3FLdFZwb2NGVnZqSWh1ZFAzZTRPWGh5ZyI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDA6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC91c2VyL3Nob3AvcHJvZHVjdHMiO31zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToxMztzOjE3OiJwYXNzd29yZF9oYXNoX3dlYiI7czo2MDoiJDJ5JDEwJFR1RlJSdGViV0x1VVFWOTBQUVVXYWVmUVIzVW5oZjBuRDlkUUVnUkhnNDdaSDB3SGhoTWx5Ijt9', 1635520124);
+('240Y3NUPB110fDEr2BBxJPE4HXrJT33zuRnie5uP', 2, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoielR0cE5GTjE2UFhTeXRMYnB2czR3S0RKYXNYeEZLTks1UDRMaW1oOSI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDA6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC91c2VyL3Nob3AvcHJvZHVjdHMiO31zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToyO3M6MTc6InBhc3N3b3JkX2hhc2hfd2ViIjtzOjYwOiIkMnkkMTAkUkRZRnk3dnlqMDk0L3E1N21RYW0ydVg4ZTJOQi5acWxPczVwWUdVSzhNdVgyY2F2MWJpUWEiO30=', 1635584904);
 
 -- --------------------------------------------------------
 
@@ -246,7 +207,7 @@ CREATE TABLE `shops` (
 --
 
 INSERT INTO `shops` (`id`, `owner_name`, `shop_name`, `domain_name`, `image`, `email`, `phone_number`, `address`, `details`, `user_id`, `created_at`, `updated_at`) VALUES
-(2, 'Raktim', 'KFC', 'kfc.com', '2shop.jpg', 'kfc@admin.com', '01403368205', 'adarsho para', 'sxafgasdfdfasdf', 13, '2021-10-28 09:27:56', '2021-10-28 09:27:56');
+(1, 'Raktm', 'KFC', 'kfc.com', '1shop.jpg', 'kfc@admin.com', '01403368205', 'adarsho para', 'asEDFSDFGASFGASDFGSDAFCVASfsadfgrsfdgdsfgdsfgdsfgdsfg', 2, '2021-10-30 03:06:13', '2021-10-30 03:06:13');
 
 -- --------------------------------------------------------
 
@@ -260,7 +221,9 @@ CREATE TABLE `users` (
   `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email_verified_at` timestamp NULL DEFAULT NULL,
   `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `role` enum('admin','shop_woner') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'shop_woner',
+  `two_factor_secret` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `two_factor_recovery_codes` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `role` enum('admin','shop_owner') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'shop_owner',
   `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `current_team_id` bigint(20) UNSIGNED DEFAULT NULL,
   `profile_photo_path` varchar(2048) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -272,9 +235,9 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `role`, `remember_token`, `current_team_id`, `profile_photo_path`, `created_at`, `updated_at`) VALUES
-(1, 'Admin', 'admin@admin.com', NULL, '$2y$10$4W6AfClKBy78XHgeWiGt5ebiApdavyfg2ZLhQQveF3WhEClUMb5F.', 'admin', NULL, NULL, NULL, '2021-10-25 09:11:05', '2021-10-25 09:11:05'),
-(13, 'Raktim', 'kfc@admin.com', NULL, '$2y$10$TuFRRtebWLuUQV90PQUWaefQR3Unhf0nD9dQEgRHg47ZH0wHhhMly', 'shop_woner', NULL, NULL, NULL, '2021-10-28 09:27:56', '2021-10-28 09:27:56');
+INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `two_factor_secret`, `two_factor_recovery_codes`, `role`, `remember_token`, `current_team_id`, `profile_photo_path`, `created_at`, `updated_at`) VALUES
+(1, 'Admin-', 'admin@admin.com', NULL, '$2y$10$f4Nrx6KIU.Tp5E.4/8ZS8OQ4ONpwojb0hacNSF2zV1z/A3YWwxL6.', NULL, NULL, 'admin', NULL, NULL, NULL, '2021-10-30 03:02:23', '2021-10-30 03:02:23'),
+(2, 'Raktm', 'kfc@admin.com', NULL, '$2y$10$RDYFy7vyj094/q57mQam2uX8e2NB.ZqlOs5pYGUK8MuX2cav1biQa', NULL, NULL, 'shop_owner', NULL, NULL, NULL, '2021-10-30 03:06:13', '2021-10-30 03:06:13');
 
 --
 -- Indexes for dumped tables
@@ -361,13 +324,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `extras`
 --
 ALTER TABLE `extras`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -379,7 +342,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
@@ -391,25 +354,25 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `product_extras`
 --
 ALTER TABLE `product_extras`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `shops`
 --
 ALTER TABLE `shops`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Constraints for dumped tables

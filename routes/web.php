@@ -38,17 +38,25 @@ Route::group(['prefix' => 'admin','middleware' => ['auth','CheckAdmin']], functi
     Route::resource('shops', ShopController::class);
 
     // Route::get('/shop/products/{name}', [AdminProductController::class, 'index'])->name('products.index');
+
+    // Route::get('/shop/products/{name}', [AdminController::class, 'AdminIndex'])->name('adminProducts.index');
+
+    // Route::resource('admincategories', CategoryController::class);
+
+    // Route::resource('adminextras', ProductExtraController::class);
+
+    // Route::resource('adminproducts', ProductController::class);
       
 });
 
 
 
 //Admin Controller
-Route::group(['prefix' => 'user','middleware' => 'auth'], function(){
+Route::group(['prefix' => 'user','middleware' => ['auth','CheckUser']], function(){
 
     Route::get('/dashboard', [UserController::class, 'index'])->name('shop_owner.dashboard');
 
-    Route::get('/shop/products', [UserController::class, 'index'])->name('userProducts.index');
+    Route::get('/shop/products', [UserController::class, 'product'])->name('userProducts.index');
 
     Route::resource('categories', CategoryController::class);
 

@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Auth;
 
-class CheckAdmin
+class CheckUser
 {
     /**
      * Handle an incoming request.
@@ -17,11 +17,12 @@ class CheckAdmin
      */
     public function handle(Request $request, Closure $next)
     {
-        if(Auth::user()->role != 'admin')
-        {
-            return redirect()->route('shop_owner.dashboard');
-        }
+       
 
+        if(Auth::user()->role != 'shop_owner')
+        {
+            return redirect()->route('admin.dashboard');
+        }
         return $next($request);
     }
 }
