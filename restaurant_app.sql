@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 30, 2021 at 11:09 AM
+-- Generation Time: Nov 02, 2021 at 07:52 PM
 -- Server version: 10.4.20-MariaDB
 -- PHP Version: 8.0.8
 
@@ -36,6 +36,13 @@ CREATE TABLE `categories` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `categories`
+--
+
+INSERT INTO `categories` (`id`, `name`, `image`, `shop_id`, `created_at`, `updated_at`) VALUES
+(1, 'Chicken', '1.jpg', 1, '2021-11-02 09:23:54', '2021-11-02 09:23:54');
+
 -- --------------------------------------------------------
 
 --
@@ -49,6 +56,14 @@ CREATE TABLE `extras` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `extras`
+--
+
+INSERT INTO `extras` (`id`, `product_id`, `extras_id`, `created_at`, `updated_at`) VALUES
+(1, 1, 1, '2021-11-02 10:17:51', '2021-11-02 10:17:51'),
+(2, 1, 3, '2021-11-02 10:17:51', '2021-11-02 10:17:51');
 
 -- --------------------------------------------------------
 
@@ -136,7 +151,6 @@ CREATE TABLE `products` (
   `product_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `details` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
   `image` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `size` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `price` double(8,2) NOT NULL,
   `shop_id` bigint(20) UNSIGNED NOT NULL,
   `category_id` bigint(20) UNSIGNED NOT NULL,
@@ -159,6 +173,14 @@ CREATE TABLE `product_extras` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `product_extras`
+--
+
+INSERT INTO `product_extras` (`id`, `extras_name`, `price`, `shop_id`, `created_at`, `updated_at`) VALUES
+(1, 'Sosa', 5.00, 1, '2021-11-02 10:04:22', '2021-11-02 10:04:22'),
+(3, 'Catch up', 3.80, 1, '2021-11-02 10:13:49', '2021-11-02 10:13:49');
+
 -- --------------------------------------------------------
 
 --
@@ -179,7 +201,7 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('240Y3NUPB110fDEr2BBxJPE4HXrJT33zuRnie5uP', 2, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoielR0cE5GTjE2UFhTeXRMYnB2czR3S0RKYXNYeEZLTks1UDRMaW1oOSI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDA6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC91c2VyL3Nob3AvcHJvZHVjdHMiO31zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToyO3M6MTc6InBhc3N3b3JkX2hhc2hfd2ViIjtzOjYwOiIkMnkkMTAkUkRZRnk3dnlqMDk0L3E1N21RYW0ydVg4ZTJOQi5acWxPczVwWUdVSzhNdVgyY2F2MWJpUWEiO30=', 1635584904);
+('BW7Uo7Ac6iFPLrfto11Jt8ze72TK4DaYARzuX0h5', 2, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoiMkRpV0I2WEY5dXdzOVpYNERFOXNTdm9DM09XTk1hMGNmRE9XN0xzMSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDA6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC91c2VyL3Nob3AvcHJvZHVjdHMiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX1zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToyO3M6MTc6InBhc3N3b3JkX2hhc2hfd2ViIjtzOjYwOiIkMnkkMTAkUkRZRnk3dnlqMDk0L3E1N21RYW0ydVg4ZTJOQi5acWxPczVwWUdVSzhNdVgyY2F2MWJpUWEiO30=', 1635870129);
 
 -- --------------------------------------------------------
 
@@ -324,13 +346,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `extras`
 --
 ALTER TABLE `extras`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -354,13 +376,13 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `product_extras`
 --
 ALTER TABLE `product_extras`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `shops`
