@@ -44,9 +44,9 @@ active
             </button>
         </div>
         @endif
-        <div class="row align-items-start">
+        <div class="row">
             <div class="col-lg-4 col-sm-6" style="margin-top: 20px">
-                <div class="card">
+                <div class="card h-100">
                     <div class="card-body">
                         <h5 class="card-title">Product Information</h5>
                         <div class="mb-2">
@@ -120,20 +120,120 @@ active
 
             {{-- Categories --}}
             <div class="col-lg-4 col-sm-6" style="margin-top: 20px">
-                <div class="card p-3">
-                    <div class="card-head">
-                        <span>Category Name</span>
+                <div class="card card--todo h-100">
+                    <div class="card-head pb-0">
+                        <h5 class="card-title">Category Name</h5>
                     </div>
-                    <div class="card-body">
-                        <div class="input-group-prepend">
-                            <label class="input-group-text" for="inputGroupSelect01">Options</label>
-                        </div>
-                        <select name="category_id" class="custom-select form-control" id="inputGroupSelect01">
-                            <option>--Select--</option>
-                            @foreach ($categories as $item)
-                            <option value="{{ $item->id }}">{{ $item->name }}</option>
-                            @endforeach
-                        </select>
+                    <div class="card-body px-0 pt-0">
+                       <ul class="todo__list list-unstyled pl-0">
+                           <li class="todo__list__item">
+                                <label class="todo__list__item__card d-block mb-0">
+                                    <input value="1" type="radio" name="todo__selector" class="todo__list__item__card__selector">
+                                    <div class="todo__list__item__card__wrapper d-flex align-items-center">
+                                        <button class="delete-btn border-0 d-inline-flex align-items-center justify-content-center rounded-circle">X</button>
+                                        <div class="todo__list__item__card__user rounded-circle overflow-hidden mr-2">
+                                            <img src="https://via.placeholder.com/80" alt="User Image" class="w-100 h-100">
+                                        </div>
+                                        <div class="todo__list__item__card__details">
+                                            <h5 class="todo__list__item__card__title">User Name</h5>
+                                            <p class="todo__list__item__card__text mb-0">Web Designer</p>
+                                        </div>
+                                    </div>
+                                </label>
+                           </li>
+                           <li class="todo__list__item">
+                                <label class="todo__list__item__card d-block mb-0">
+                                    <input value="2" type="radio" name="todo__selector" class="todo__list__item__card__selector">
+                                    <div class="todo__list__item__card__wrapper d-flex align-items-center">
+                                        <button class="delete-btn border-0 d-inline-flex align-items-center justify-content-center rounded-circle">X</button>
+                                        <div class="todo__list__item__card__user rounded-circle overflow-hidden mr-2">
+                                            <img src="https://via.placeholder.com/80" alt="User Image" class="w-100 h-100">
+                                        </div>
+                                        <div class="todo__list__item__card__details">
+                                            <h5 class="todo__list__item__card__title">User Name</h5>
+                                            <p class="todo__list__item__card__text mb-0">Web Designer</p>
+                                        </div>
+                                    </div>
+                                </label>
+                           </li>
+                           <li class="todo__list__item">
+                                <label class="todo__list__item__card d-block mb-0">
+                                    <input value="3" type="radio" name="todo__selector" class="todo__list__item__card__selector">
+                                    <div class="todo__list__item__card__wrapper d-flex align-items-center">
+                                        <button class="delete-btn border-0 d-inline-flex align-items-center justify-content-center rounded-circle">X</button>
+                                        <div class="todo__list__item__card__user rounded-circle overflow-hidden mr-2">
+                                            <img src="https://via.placeholder.com/80" alt="User Image" class="w-100 h-100">
+                                        </div>
+                                        <div class="todo__list__item__card__details">
+                                            <h5 class="todo__list__item__card__title">User Name</h5>
+                                            <p class="todo__list__item__card__text mb-0">Web Designer</p>
+                                        </div>
+                                    </div>
+                                </label>
+                           </li>
+                           <li class="todo__list__item">
+                                <label class="todo__list__item__card d-block mb-0">
+                                    <input type="radio" name="todo__selector" class="todo__list__item__card__selector">
+                                    <div class="todo__list__item__card__wrapper d-flex align-items-center">
+                                        <button class="delete-btn border-0 d-inline-flex align-items-center justify-content-center rounded-circle">X</button>
+                                        <div class="todo__list__item__card__user rounded-circle overflow-hidden mr-2">
+                                            <img src="https://via.placeholder.com/80" alt="User Image" class="w-100 h-100">
+                                        </div>
+                                        <div class="todo__list__item__card__details">
+                                            <h5 class="todo__list__item__card__title">User Name</h5>
+                                            <p class="todo__list__item__card__text mb-0">Web Designer</p>
+                                        </div>
+                                    </div>
+                                </label>
+                           </li>
+                           <li class="todo__list__item">
+                                <label class="todo__list__item__card d-block mb-0">
+                                    <input type="radio" name="todo__selector" class="todo__list__item__card__selector">
+                                    <div class="todo__list__item__card__wrapper d-flex align-items-center">
+                                        <button class="delete-btn border-0 d-inline-flex align-items-center justify-content-center rounded-circle">X</button>
+                                        <div class="todo__list__item__card__user rounded-circle overflow-hidden mr-2">
+                                            <img src="https://via.placeholder.com/80" alt="User Image" class="w-100 h-100">
+                                        </div>
+                                        <div class="todo__list__item__card__details">
+                                            <h5 class="todo__list__item__card__title">User Name</h5>
+                                            <p class="todo__list__item__card__text mb-0">Web Designer</p>
+                                        </div>
+                                    </div>
+                                </label>
+                           </li>
+
+                           
+                           <li class="todo__list__item">
+                                <label class="todo__list__item__card d-block mb-0">
+                                    <input type="radio" name="todo__selector" class="todo__list__item__card__selector">
+                                    <div class="todo__list__item__card__wrapper d-flex align-items-center">
+                                        <button class="delete-btn border-0 d-inline-flex align-items-center justify-content-center rounded-circle">X</button>
+                                        <div class="todo__list__item__card__user rounded-circle overflow-hidden mr-2">
+                                            <img src="https://via.placeholder.com/80" alt="User Image" class="w-100 h-100">
+                                        </div>
+                                        <div class="todo__list__item__card__details">
+                                            <h5 class="todo__list__item__card__title">User Name</h5>
+                                            <p class="todo__list__item__card__text mb-0">Web Designer</p>
+                                        </div>
+                                    </div>
+                                </label>
+                           </li>
+                           <li class="todo__list__item">
+                                <label class="todo__list__item__card d-block mb-0">
+                                    <input type="radio" name="todo__selector" class="todo__list__item__card__selector">
+                                    <div class="todo__list__item__card__wrapper d-flex align-items-center">
+                                        <button class="delete-btn border-0 d-inline-flex align-items-center justify-content-center rounded-circle">X</button>
+                                        <div class="todo__list__item__card__user rounded-circle overflow-hidden mr-2">
+                                            <img src="https://via.placeholder.com/80" alt="User Image" class="w-100 h-100">
+                                        </div>
+                                        <div class="todo__list__item__card__details">
+                                            <h5 class="todo__list__item__card__title">User Name</h5>
+                                            <p class="todo__list__item__card__text mb-0">Web Designer</p>
+                                        </div>
+                                    </div>
+                                </label>
+                           </li>
+                       </ul>
                     </div>
 
                     <div class="card-footer">
@@ -150,20 +250,97 @@ active
 
             {{-- Extras --}}
             <div class="col-lg-4 col-sm-6" style="margin-top: 20px">
-                <div class="card p-3">
-                    <div class="card-head">
-                        <span>Extas</span>
+                <div class="card card--todo h-100">
+                    <div class="card-head pb-0">
+                        <h5 class="card-title">Add Extas</h5>
                     </div>
-                    <div class="card-body">
-                        <div class="input-group-prepend">
-                            <label class="input-group-text" for="extras">Options</label>
-                        </div>
-                        <select required multiple name="extras_id[]" class="custom-select form-control" id="extras">
-
-                            @foreach ($extras as $item)
-                            <option value="{{ $item->id }}">{{ $item->extras_name }}</option>
-                            @endforeach
-                        </select>
+                    <div class="card-body px-0 pt-0">
+                       <ul class="todo__list list-unstyled pl-0">
+                           <li class="todo__list__item">
+                                <label class="todo__list__item__card d-block mb-0">
+                                    <input value="A" type="checkbox" name="todo__extra-selector" class="todo__list__item__card__selector">
+                                    <div class="todo__list__item__card__wrapper d-flex align-items-center justify-content-between">
+                                        <button class="delete-btn border-0 d-inline-flex align-items-center justify-content-center rounded-circle">X</button>
+                                        <div class="todo__list__item__card__details">
+                                            <h5 class="todo__list__item__card__title">User Name</h5>
+                                            <p class="todo__list__item__card__text mb-0">+50,00</p>
+                                        </div>
+                                    </div>
+                                </label>
+                           </li>
+                           <li class="todo__list__item">
+                                <label class="todo__list__item__card d-block mb-0">
+                                    <input value="B" type="checkbox" name="todo__extra-selector" class="todo__list__item__card__selector">
+                                    <div class="todo__list__item__card__wrapper d-flex align-items-center justify-content-between">
+                                        <button class="delete-btn border-0 d-inline-flex align-items-center justify-content-center rounded-circle">X</button>
+                                        <div class="todo__list__item__card__details">
+                                            <h5 class="todo__list__item__card__title">User Name</h5>
+                                            <p class="todo__list__item__card__text mb-0">+50,00</p>
+                                        </div>
+                                    </div>
+                                </label>
+                           </li>
+                           <li class="todo__list__item">
+                                <label class="todo__list__item__card d-block mb-0">
+                                    <input value="C" type="checkbox" name="todo__extra-selector" class="todo__list__item__card__selector">
+                                    <div class="todo__list__item__card__wrapper d-flex align-items-center justify-content-between">
+                                        <button class="delete-btn border-0 d-inline-flex align-items-center justify-content-center rounded-circle">X</button>
+                                        <div class="todo__list__item__card__details">
+                                            <h5 class="todo__list__item__card__title">User Name</h5>
+                                            <p class="todo__list__item__card__text mb-0">+50,00</p>
+                                        </div>
+                                    </div>
+                                </label>
+                           </li>
+                           <li class="todo__list__item">
+                                <label class="todo__list__item__card d-block mb-0">
+                                    <input type="checkbox" name="todo__extra-selector" class="todo__list__item__card__selector">
+                                    <div class="todo__list__item__card__wrapper d-flex align-items-center justify-content-between">
+                                        <button class="delete-btn border-0 d-inline-flex align-items-center justify-content-center rounded-circle">X</button>
+                                        <div class="todo__list__item__card__details">
+                                            <h5 class="todo__list__item__card__title">User Name</h5>
+                                            <p class="todo__list__item__card__text mb-0">+50,00</p>
+                                        </div>
+                                    </div>
+                                </label>
+                           </li>
+                           <li class="todo__list__item">
+                                <label class="todo__list__item__card d-block mb-0">
+                                    <input type="checkbox" name="todo__extra-selector" class="todo__list__item__card__selector">
+                                    <div class="todo__list__item__card__wrapper d-flex align-items-center justify-content-between">
+                                        <button class="delete-btn border-0 d-inline-flex align-items-center justify-content-center rounded-circle">X</button>
+                                        <div class="todo__list__item__card__details">
+                                            <h5 class="todo__list__item__card__title">User Name</h5>
+                                            <p class="todo__list__item__card__text mb-0">+50,00</p>
+                                        </div>
+                                    </div>
+                                </label>
+                           </li>
+                           <li class="todo__list__item">
+                                <label class="todo__list__item__card d-block mb-0">
+                                    <input type="checkbox" name="todo__extra-selector" class="todo__list__item__card__selector">
+                                    <div class="todo__list__item__card__wrapper d-flex align-items-center justify-content-between">
+                                        <button class="delete-btn border-0 d-inline-flex align-items-center justify-content-center rounded-circle">X</button>
+                                        <div class="todo__list__item__card__details">
+                                            <h5 class="todo__list__item__card__title">User Name</h5>
+                                            <p class="todo__list__item__card__text mb-0">+50,00</p>
+                                        </div>
+                                    </div>
+                                </label>
+                           </li>
+                           <li class="todo__list__item">
+                                <label class="todo__list__item__card d-block mb-0">
+                                    <input type="checkbox" name="todo__extra-selector" class="todo__list__item__card__selector">
+                                    <div class="todo__list__item__card__wrapper d-flex align-items-center justify-content-between">
+                                        <button class="delete-btn border-0 d-inline-flex align-items-center justify-content-center rounded-circle">X</button>
+                                        <div class="todo__list__item__card__details">
+                                            <h5 class="todo__list__item__card__title">User Name</h5>
+                                            <p class="todo__list__item__card__text mb-0">+50,00</p>
+                                        </div>
+                                    </div>
+                                </label>
+                           </li>
+                       </ul>
                     </div>
 
                     <div class="card-footer">

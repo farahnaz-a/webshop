@@ -8501,7 +8501,7 @@ a.text-dark:focus, a.text-dark:hover {
   margin-bottom: 20px;
 }
 
-.card-body {
+.card-body{
   padding: 20px;
 }
 
@@ -56728,4 +56728,73 @@ a.hover-white-8:hover, a.hover-white-8:focus {
 
 .mx-wd-1350 {
   max-width: 1350px;
+}
+
+/* Todo Card Style */
+
+.card--todo .card-head {
+  padding: 20px;
+}
+.card--todo .card-body {
+  max-height: 450px;
+  overflow-y: auto;
+  scrollbar-width: none;
+}
+.card--todo .card-body::-webkit-scrollbar{
+  width: 0;
+}
+.todo__list__item__card {
+  position: relative;
+}
+.todo__list__item__card__selector{
+  position: absolute;
+  appearance: none;
+  opacity: 0;
+}
+.todo__list__item__card__wrapper {
+  position: relative;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: all 0.15s ease-in-out;
+}
+.todo__list__item__card__selector:checked ~ .todo__list__item__card__wrapper,
+.todo__list__item__card__wrapper:hover {
+  background-color: #fcec94;
+}
+.todo__list__item__card__wrapper .delete-btn{
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translate(-50%, 50%);
+  width: 25px;
+  height: 25px;
+  font-size: 10px;
+  line-height: 0;
+  color: #fff;
+  background-color: #f83a04;
+  cursor: pointer;
+  opacity: 0;
+  transition: all 0.15s ease-in-out;
+}
+
+.todo__list__item__card__wrapper .action-btn{
+  font-size: 16px;
+  padding: 8px 25px;
+  color: #fff;
+  background-color: #f83a04;
+  cursor: pointer;
+}
+
+.todo__list__item__card__selector:checked ~ .todo__list__item__card__wrapper .delete-btn,
+.todo__list__item__card__wrapper:hover .delete-btn{
+  opacity: 1;
+}
+.todo__list__item__card__user{
+  width: 80px;
+  height: 80px;
+}
+.todo__list__item__card__title{
+  color: #212529;
+  font-size: 16px;
+  font-weight: 600;
 }
