@@ -42,7 +42,6 @@ class ProductController extends Controller
             'product_name' => 'required',
             'details'      => 'required',
             'image'        => 'required|image',
-            'size'         => 'required',
             'price'        => 'required',
             'category_id'  => 'required',
         ]);

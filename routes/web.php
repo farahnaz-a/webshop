@@ -63,6 +63,10 @@ Route::group(['prefix' => 'user','middleware' => ['auth','CheckUser']], function
     Route::resource('extras', ProductExtraController::class);
 
     Route::resource('products', ProductController::class);
+    
+    Route::get('category/delete/{id}',[CategoryController::class, 'destroy'])->name('category.delete');
+
+    Route::get('extra/delete/{id}',[ProductExtraController::class, 'destroy'])->name('extra.delete');
 
 });
 

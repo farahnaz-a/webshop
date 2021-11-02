@@ -28,6 +28,22 @@ active
             </button>
         </div>
         @endif
+        @if (session('extra_delete'))
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <strong>{{ session('extra_delete') }}</strong>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        @endif
+        @if (session('category_delete'))
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <strong>{{ session('category_delete') }}</strong>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        @endif
         @if (session('product_success'))
         <div class="alert alert-success alert-dismissible fade show" role="alert">
             <strong>{{ session('product_success') }}</strong>
@@ -88,20 +104,7 @@ active
                             @enderror
                         </div>
 
-                        <div class="mb-2">
-                            <div class="input-group-prepend d-block">
-                                <label class="input-group-text" for="inputGroupSelect01">Options</label>
-                            </div>
-                            <select name="size" required class="custom-select form-control" id="inputGroupSelect01">
-                                <option>--Select--</option>
-                                <option value="small">Small</option>
-                                <option value="medium">Medium</option>
-                                <option value="large">Large</option>
-                            </select>
-                            @error('size')
-                            <span class="text-danger">{{$message}}</span>
-                            @enderror
-                        </div>
+                      
 
                         <div class="mb-2">
                             <label id="price">
@@ -125,115 +128,52 @@ active
                         <h5 class="card-title">Category Name</h5>
                     </div>
                     <div class="card-body px-0 pt-0">
-                       <ul class="todo__list list-unstyled pl-0">
-                           <li class="todo__list__item">
+                        <ul class="todo__list list-unstyled pl-0">
+                            @foreach ($categories as $item)
+                            <li class="todo__list__item">
                                 <label class="todo__list__item__card d-block mb-0">
-                                    <input value="1" type="radio" name="todo__selector" class="todo__list__item__card__selector">
+                                    <input value="{{ $item->id }}" type="radio" name="category_id"
+                                        class="todo__list__item__card__selector">
                                     <div class="todo__list__item__card__wrapper d-flex align-items-center">
-                                        <button class="delete-btn border-0 d-inline-flex align-items-center justify-content-center rounded-circle">X</button>
+                                        <a style="color: white" data-toggle="modal"
+                                            data-target="#category{{ $item->id }}"
+                                            class="delete-btn border-0 d-inline-flex align-items-center justify-content-center rounded-circle">X</a>
                                         <div class="todo__list__item__card__user rounded-circle overflow-hidden mr-2">
-                                            <img src="https://via.placeholder.com/80" alt="User Image" class="w-100 h-100">
+                                            <img src="{{ asset('uploads/product_category') }}/{{ $item->image }}"
+                                                alt="User Image" class="w-100 h-100">
                                         </div>
                                         <div class="todo__list__item__card__details">
-                                            <h5 class="todo__list__item__card__title">User Name</h5>
-                                            <p class="todo__list__item__card__text mb-0">Web Designer</p>
+                                            <h5 class="todo__list__item__card__title">{{ $item->name }}</h5>
+                                            {{-- <p class="todo__list__item__card__text mb-0">Web Designer</p> --}}
                                         </div>
                                     </div>
                                 </label>
-                           </li>
-                           <li class="todo__list__item">
-                                <label class="todo__list__item__card d-block mb-0">
-                                    <input value="2" type="radio" name="todo__selector" class="todo__list__item__card__selector">
-                                    <div class="todo__list__item__card__wrapper d-flex align-items-center">
-                                        <button class="delete-btn border-0 d-inline-flex align-items-center justify-content-center rounded-circle">X</button>
-                                        <div class="todo__list__item__card__user rounded-circle overflow-hidden mr-2">
-                                            <img src="https://via.placeholder.com/80" alt="User Image" class="w-100 h-100">
-                                        </div>
-                                        <div class="todo__list__item__card__details">
-                                            <h5 class="todo__list__item__card__title">User Name</h5>
-                                            <p class="todo__list__item__card__text mb-0">Web Designer</p>
-                                        </div>
-                                    </div>
-                                </label>
-                           </li>
-                           <li class="todo__list__item">
-                                <label class="todo__list__item__card d-block mb-0">
-                                    <input value="3" type="radio" name="todo__selector" class="todo__list__item__card__selector">
-                                    <div class="todo__list__item__card__wrapper d-flex align-items-center">
-                                        <button class="delete-btn border-0 d-inline-flex align-items-center justify-content-center rounded-circle">X</button>
-                                        <div class="todo__list__item__card__user rounded-circle overflow-hidden mr-2">
-                                            <img src="https://via.placeholder.com/80" alt="User Image" class="w-100 h-100">
-                                        </div>
-                                        <div class="todo__list__item__card__details">
-                                            <h5 class="todo__list__item__card__title">User Name</h5>
-                                            <p class="todo__list__item__card__text mb-0">Web Designer</p>
-                                        </div>
-                                    </div>
-                                </label>
-                           </li>
-                           <li class="todo__list__item">
-                                <label class="todo__list__item__card d-block mb-0">
-                                    <input type="radio" name="todo__selector" class="todo__list__item__card__selector">
-                                    <div class="todo__list__item__card__wrapper d-flex align-items-center">
-                                        <button class="delete-btn border-0 d-inline-flex align-items-center justify-content-center rounded-circle">X</button>
-                                        <div class="todo__list__item__card__user rounded-circle overflow-hidden mr-2">
-                                            <img src="https://via.placeholder.com/80" alt="User Image" class="w-100 h-100">
-                                        </div>
-                                        <div class="todo__list__item__card__details">
-                                            <h5 class="todo__list__item__card__title">User Name</h5>
-                                            <p class="todo__list__item__card__text mb-0">Web Designer</p>
-                                        </div>
-                                    </div>
-                                </label>
-                           </li>
-                           <li class="todo__list__item">
-                                <label class="todo__list__item__card d-block mb-0">
-                                    <input type="radio" name="todo__selector" class="todo__list__item__card__selector">
-                                    <div class="todo__list__item__card__wrapper d-flex align-items-center">
-                                        <button class="delete-btn border-0 d-inline-flex align-items-center justify-content-center rounded-circle">X</button>
-                                        <div class="todo__list__item__card__user rounded-circle overflow-hidden mr-2">
-                                            <img src="https://via.placeholder.com/80" alt="User Image" class="w-100 h-100">
-                                        </div>
-                                        <div class="todo__list__item__card__details">
-                                            <h5 class="todo__list__item__card__title">User Name</h5>
-                                            <p class="todo__list__item__card__text mb-0">Web Designer</p>
-                                        </div>
-                                    </div>
-                                </label>
-                           </li>
+                            </li>
 
-                           
-                           <li class="todo__list__item">
-                                <label class="todo__list__item__card d-block mb-0">
-                                    <input type="radio" name="todo__selector" class="todo__list__item__card__selector">
-                                    <div class="todo__list__item__card__wrapper d-flex align-items-center">
-                                        <button class="delete-btn border-0 d-inline-flex align-items-center justify-content-center rounded-circle">X</button>
-                                        <div class="todo__list__item__card__user rounded-circle overflow-hidden mr-2">
-                                            <img src="https://via.placeholder.com/80" alt="User Image" class="w-100 h-100">
+                            <!--Category Modal -->
+                            <div class="modal fade" id="category{{ $item->id }}" tabindex="-1" role="dialog"
+                                aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title text-center text-danger" id="exampleModalLongTitle">!! Warning !!</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
                                         </div>
-                                        <div class="todo__list__item__card__details">
-                                            <h5 class="todo__list__item__card__title">User Name</h5>
-                                            <p class="todo__list__item__card__text mb-0">Web Designer</p>
-                                        </div>
+                                       
+                                            <div class="modal-body">
+                                                One or more then one product might be add under this category. If You
+                                                delete this category those Product will be deleted
+                                            </div>
+                                            <div class="modal-footer">
+                                                <a href="{{ route('category.delete',$item->id) }}" class="btn btn-danger">Confirm Delete</a>
+                                            </div>
                                     </div>
-                                </label>
-                           </li>
-                           <li class="todo__list__item">
-                                <label class="todo__list__item__card d-block mb-0">
-                                    <input type="radio" name="todo__selector" class="todo__list__item__card__selector">
-                                    <div class="todo__list__item__card__wrapper d-flex align-items-center">
-                                        <button class="delete-btn border-0 d-inline-flex align-items-center justify-content-center rounded-circle">X</button>
-                                        <div class="todo__list__item__card__user rounded-circle overflow-hidden mr-2">
-                                            <img src="https://via.placeholder.com/80" alt="User Image" class="w-100 h-100">
-                                        </div>
-                                        <div class="todo__list__item__card__details">
-                                            <h5 class="todo__list__item__card__title">User Name</h5>
-                                            <p class="todo__list__item__card__text mb-0">Web Designer</p>
-                                        </div>
-                                    </div>
-                                </label>
-                           </li>
-                       </ul>
+                                </div>
+                            </div>
+                            @endforeach
+                        </ul>
                     </div>
 
                     <div class="card-footer">
@@ -255,92 +195,50 @@ active
                         <h5 class="card-title">Add Extas</h5>
                     </div>
                     <div class="card-body px-0 pt-0">
-                       <ul class="todo__list list-unstyled pl-0">
-                           <li class="todo__list__item">
+                        <ul class="todo__list list-unstyled pl-0">
+
+                            @foreach ($extras as $item)
+                            <li class="todo__list__item">
                                 <label class="todo__list__item__card d-block mb-0">
-                                    <input value="A" type="checkbox" name="todo__extra-selector" class="todo__list__item__card__selector">
-                                    <div class="todo__list__item__card__wrapper d-flex align-items-center justify-content-between">
-                                        <button class="delete-btn border-0 d-inline-flex align-items-center justify-content-center rounded-circle">X</button>
+                                    <input value="{{$item->id}}" type="checkbox" name="extras_id[]"
+                                        class="todo__list__item__card__selector">
+                                    <div
+                                        class="todo__list__item__card__wrapper d-flex align-items-center justify-content-between">
+                                        <a style="color: white" data-toggle="modal"
+                                        data-target="#extra{{ $item->id }}"
+                                            class="delete-btn border-0 d-inline-flex align-items-center justify-content-center rounded-circle">X</a>
                                         <div class="todo__list__item__card__details">
-                                            <h5 class="todo__list__item__card__title">User Name</h5>
-                                            <p class="todo__list__item__card__text mb-0">+50,00</p>
+                                            <h5 class="todo__list__item__card__title">{{ $item->extras_name}}</h5>
+                                            <p class="todo__list__item__card__text mb-0">Price: ${{ $item->price}}</p>
                                         </div>
                                     </div>
                                 </label>
-                           </li>
-                           <li class="todo__list__item">
-                                <label class="todo__list__item__card d-block mb-0">
-                                    <input value="B" type="checkbox" name="todo__extra-selector" class="todo__list__item__card__selector">
-                                    <div class="todo__list__item__card__wrapper d-flex align-items-center justify-content-between">
-                                        <button class="delete-btn border-0 d-inline-flex align-items-center justify-content-center rounded-circle">X</button>
-                                        <div class="todo__list__item__card__details">
-                                            <h5 class="todo__list__item__card__title">User Name</h5>
-                                            <p class="todo__list__item__card__text mb-0">+50,00</p>
+                            </li>
+
+                            
+                            <!--Extras Modal -->
+                            <div class="modal fade" id="extra{{ $item->id }}" tabindex="-1" role="dialog"
+                                aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title text-center text-danger" id="exampleModalLongTitle">!! Warning !!</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
                                         </div>
+                                       
+                                            <div class="modal-body">
+                                               This Extra also delete from product if product hav this extra 
+                                            </div>
+                                            <div class="modal-footer">
+                                                <a href="{{ route('extra.delete',$item->id) }}" class="btn btn-danger">Confirm Delete</a>
+                                            </div>
                                     </div>
-                                </label>
-                           </li>
-                           <li class="todo__list__item">
-                                <label class="todo__list__item__card d-block mb-0">
-                                    <input value="C" type="checkbox" name="todo__extra-selector" class="todo__list__item__card__selector">
-                                    <div class="todo__list__item__card__wrapper d-flex align-items-center justify-content-between">
-                                        <button class="delete-btn border-0 d-inline-flex align-items-center justify-content-center rounded-circle">X</button>
-                                        <div class="todo__list__item__card__details">
-                                            <h5 class="todo__list__item__card__title">User Name</h5>
-                                            <p class="todo__list__item__card__text mb-0">+50,00</p>
-                                        </div>
-                                    </div>
-                                </label>
-                           </li>
-                           <li class="todo__list__item">
-                                <label class="todo__list__item__card d-block mb-0">
-                                    <input type="checkbox" name="todo__extra-selector" class="todo__list__item__card__selector">
-                                    <div class="todo__list__item__card__wrapper d-flex align-items-center justify-content-between">
-                                        <button class="delete-btn border-0 d-inline-flex align-items-center justify-content-center rounded-circle">X</button>
-                                        <div class="todo__list__item__card__details">
-                                            <h5 class="todo__list__item__card__title">User Name</h5>
-                                            <p class="todo__list__item__card__text mb-0">+50,00</p>
-                                        </div>
-                                    </div>
-                                </label>
-                           </li>
-                           <li class="todo__list__item">
-                                <label class="todo__list__item__card d-block mb-0">
-                                    <input type="checkbox" name="todo__extra-selector" class="todo__list__item__card__selector">
-                                    <div class="todo__list__item__card__wrapper d-flex align-items-center justify-content-between">
-                                        <button class="delete-btn border-0 d-inline-flex align-items-center justify-content-center rounded-circle">X</button>
-                                        <div class="todo__list__item__card__details">
-                                            <h5 class="todo__list__item__card__title">User Name</h5>
-                                            <p class="todo__list__item__card__text mb-0">+50,00</p>
-                                        </div>
-                                    </div>
-                                </label>
-                           </li>
-                           <li class="todo__list__item">
-                                <label class="todo__list__item__card d-block mb-0">
-                                    <input type="checkbox" name="todo__extra-selector" class="todo__list__item__card__selector">
-                                    <div class="todo__list__item__card__wrapper d-flex align-items-center justify-content-between">
-                                        <button class="delete-btn border-0 d-inline-flex align-items-center justify-content-center rounded-circle">X</button>
-                                        <div class="todo__list__item__card__details">
-                                            <h5 class="todo__list__item__card__title">User Name</h5>
-                                            <p class="todo__list__item__card__text mb-0">+50,00</p>
-                                        </div>
-                                    </div>
-                                </label>
-                           </li>
-                           <li class="todo__list__item">
-                                <label class="todo__list__item__card d-block mb-0">
-                                    <input type="checkbox" name="todo__extra-selector" class="todo__list__item__card__selector">
-                                    <div class="todo__list__item__card__wrapper d-flex align-items-center justify-content-between">
-                                        <button class="delete-btn border-0 d-inline-flex align-items-center justify-content-center rounded-circle">X</button>
-                                        <div class="todo__list__item__card__details">
-                                            <h5 class="todo__list__item__card__title">User Name</h5>
-                                            <p class="todo__list__item__card__text mb-0">+50,00</p>
-                                        </div>
-                                    </div>
-                                </label>
-                           </li>
-                       </ul>
+                                </div>
+                            </div>
+                            @endforeach
+                        </ul>
                     </div>
 
                     <div class="card-footer">
@@ -475,7 +373,6 @@ active
                         <th scope="col">Size</th>
                         <th scope="col">Price</th>
                         <th scope="col">Details</th>
-                        <th scope="col">Edit</th>
                         <th scope="col">Delete</th>
                     </tr>
                 </thead>
@@ -491,7 +388,7 @@ active
                             {{ $loop->index + 1 }}. {{ $extra->extra->extras_name}} <br>
                             @endforeach
                         </td>
-                        <td>{{ $item->size}}</td>
+                        
                         <td>${{ $item->price}}</td>
                         <td>
                             <a class="">
@@ -503,12 +400,12 @@ active
                             </a>
                         </td>
                         <td>
-                          
-                                <button type="button" class="btn btn-sm btn-secondary" data-toggle="modal"
-                                    data-target="#{{ $item->id }}Edit">
-                                    Edit
-                                </button>
-                       
+
+                            <button type="button" class="btn btn-sm btn-secondary" data-toggle="modal"
+                                data-target="#{{ $item->id }}Edit">
+                                Edit
+                            </button>
+
                         </td>
                         <td>
                             <form action="{{route('products.destroy',$item->id)}}" method="POST">
@@ -516,7 +413,7 @@ active
                                 @csrf
                                 <a class="btn btn-sm btn-danger" href="{{route('products.destroy',$item->id)}}"
                                     onclick="event.preventDefault(); this.closest('form').submit();">
-                                   
+
                                     <span>Delete</span>
                                 </a>
                             </form>
@@ -612,7 +509,7 @@ active
             </div>
 
             <form action="{{ route('products.update',$item->id) }}" method="POST" enctype="multipart/form-data">
-                @method('PUT') 
+                @method('PUT')
                 @csrf
                 <div class="modal-body">
                     <div class="mb-2">
@@ -754,8 +651,8 @@ active
                 </div>
 
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary btn-sm "style="border-radius: 5px">
-                            Update
+                    <button type="submit" class="btn btn-primary btn-sm " style="border-radius: 5px">
+                        Update
                     </button>
                 </div>
             </form>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Extra;
 use App\Models\ProductExtra;
 use App\Models\Shop;
 use Carbon\Carbon;
@@ -88,8 +89,17 @@ class ProductExtraController extends Controller
      * @param  \App\Models\ProductExtra  $productExtra
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ProductExtra $productExtra)
+    public function destroy($id)
     {
-        //
+        $category = ProductExtra::find($id)->delete();
+
+        $products_extras = Extra::where('extras_id',$id)->get();
+
+        foreach ($products_extras as $products_extra) {
+           
+            $products_extra->delete();
+        }
+
+        return redirect()->route('userProducts.index')->with('extra_delete','Delete Extra Successfully');
     }
 }

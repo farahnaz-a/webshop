@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use App\Models\Shop;
 use Carbon\Carbon;
@@ -98,8 +99,17 @@ class CategoryController extends Controller
      * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Category $category)
+    public function destroy($id)
     {
-        //
+        $category = Category::find($id)->delete();
+
+        $products = Product::where('category_id',$id)->get();
+
+        foreach ($products as $product) {
+           
+            $product->delete();
+        }
+
+        return redirect()->route('userProducts.index')->with('category_delete','Delete Category Successfully');
     }
 }
