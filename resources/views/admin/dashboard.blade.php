@@ -121,7 +121,7 @@
                         </a>
                         <div class="dropdown-menu dropdown-menu-header wd-200">
                             <ul class="list-unstyled user-profile-nav">
-                                <li><a href="{{ url('user/profile') }}"><i class="icon ion-ios-person-outline"></i> Edit Profile</a></li>
+                                <li><a href="{{ route('admin.profile') }}"><i class="icon ion-ios-person-outline"></i> Edit Profile</a></li>
                                 <form method="POST" action="{{ route('logout') }}">
                                     @csrf
                                     <li>
@@ -135,14 +135,14 @@
                         </div><!-- dropdown-menu -->
                     </div><!-- dropdown -->
                 </nav>
-                <div class="navicon-right" style="background: #fcb800">
+                {{-- <div class="navicon-right" style="background: #fcb800">
                     <a id="btnRightMenu" href="" class="pos-relative">
                         <i class="icon ion-ios-bell-outline"></i>
                         <!-- start: if statement -->
                         <span class="square-8 bg-danger"></span>
                         <!-- end: if statement -->
                     </a>
-                </div><!-- navicon-right -->
+                </div><!-- navicon-right --> --}}
             </div><!-- sl-header-right -->
         </div><!-- sl-header -->
         <!-- ########## END: HEAD PANEL ########## -->
@@ -360,6 +360,7 @@
         <script src="{{ asset('dashboard_asset/lib/bootstrap/bootstrap.js') }}"></script>
         <script src="{{ asset('dashboard_asset/lib/perfect-scrollbar/js/perfect-scrollbar.jquery.js') }}"></script>
         <script src="{{ asset('dashboard_asset/js/starlight.js') }}"></script>
+        <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
         @yield('js')
 
 </body>

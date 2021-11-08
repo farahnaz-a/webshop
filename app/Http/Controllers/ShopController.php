@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
+use App\Models\Product;
+use App\Models\ProductExtra;
 use App\Models\Shop;
 use App\Models\User;
 use Carbon\Carbon;
@@ -77,9 +80,13 @@ class ShopController extends Controller
      * @param  \App\Models\Shop  $shop
      * @return \Illuminate\Http\Response
      */
-    public function show(Shop $shop)
+    public function show($id)
     {
-        //
+        $shop       = Shop::where('id',$id)->first();
+        $product    = Product::where('shop_id',$id)->orderBy('created_at', 'DESC')->get();
+        $categories = Category::where('shop_id',$shop->id)->get();
+        $extras     = ProductExtra::where('shop_id',$shop->id)->get();
+        return view('admin.shop.shop_details',compact('shop','product','categories','extras'));
     }
 
     /**

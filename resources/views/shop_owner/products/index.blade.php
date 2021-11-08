@@ -428,8 +428,6 @@ active
 
 @foreach ($product as $item)
 
-
-
 <!--Details Modal -->
 <div class="modal fade" id="{{ $item->id }}Details" tabindex="-1" role="dialog" aria-labelledby="detailsTitle"
     aria-hidden="true">
@@ -557,7 +555,7 @@ active
 
 
 
-                    <div class="mb-2">
+                    {{-- <div class="mb-2">
                         <div class="input-group-prepend d-block">
                             <label class="input-group-text" for="inputGroupSelect01">Select Size</label>
                         </div>
@@ -586,7 +584,7 @@ active
                         @error('size')
                         <span class="text-danger">{{$message}}</span>
                         @enderror
-                    </div>
+                    </div> --}}
 
                     <div class="mb-2">
                         <label id="price">

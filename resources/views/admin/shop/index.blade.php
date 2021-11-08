@@ -72,12 +72,12 @@ active
     @foreach ($shops as $shop)
     <div class="col-lg-4 col-sm-6" style="margin-top: 30px">
         <div class="card pd-20 pd-sm-40">
-            <a href="#">
+            <a href="{{ route('shops.show',$shop->id) }}">
                 <h6 class="card-body-title text-center">{{ $shop->shop_name }}</h6>
             </a>
             <br>
             <div class="card bd-0 ">
-                <a href="#">
+                <a href="{{ route('shops.show',$shop->id) }}">
                     <img style="max-height: 120px; object-fit: cover;" class="card-img-top img-fluid" src="{{ asset('uploads/shop')}}/{{ $shop->image }}" alt="Image">
                 </a>
                 

@@ -1,14 +1,12 @@
 <?php
 
 use App\Http\Controllers\AdminController;
-use App\Http\Controllers\AdminProductController;
+use App\Http\Controllers\AdminProfileController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProductExtraController;
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\UserController;
-use App\Models\Category;
-use App\Models\ProductExtra;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -36,6 +34,13 @@ Route::group(['prefix' => 'admin','middleware' => ['auth','CheckAdmin']], functi
     //Admin Product Controller
     // Route::resource('products', AdminProductController::class);
     Route::resource('shops', ShopController::class);
+
+
+    //Admin Profile
+    Route::get('/profile/index', [AdminProfileController::class, 'index'])->name('admin.profile');
+    Route::post('/profile/image/{id}', [AdminProfileController::class, 'updateImage'])->name('admin.profileimage');
+    Route::post('/profile/info/{id}', [AdminProfileController::class, 'updateinfo'])->name('admin.profileinfo');
+    Route::post('/profile/password', [AdminProfileController::class, 'updatepassword'])->name('admin.profilepassword');
 
     // Route::get('/shop/products/{name}', [AdminProductController::class, 'index'])->name('products.index');
 
