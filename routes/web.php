@@ -9,6 +9,7 @@ use App\Http\Controllers\ShopController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,10 +21,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
+
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('login');
 });
 
+Route::get('/register', function () {
+    return redirect()->back();
+});
 
 //Admin Controller
 Route::group(['prefix' => 'admin','middleware' => ['auth','CheckAdmin']], function(){
@@ -56,10 +62,12 @@ Route::group(['prefix' => 'admin','middleware' => ['auth','CheckAdmin']], functi
 
 
 
+Route::get('getlist', [UserController::class, 'getlist']);
 //Admin Controller
 Route::group(['prefix' => 'user','middleware' => ['auth','CheckUser']], function(){
 
     Route::get('/dashboard', [UserController::class, 'index'])->name('shop_owner.dashboard');
+
 
     Route::get('/shop/products', [UserController::class, 'product'])->name('userProducts.index');
 
@@ -77,6 +85,6 @@ Route::group(['prefix' => 'user','middleware' => ['auth','CheckUser']], function
 
 
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
+// Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+//     return view('dashboard');
+// })->name('dashboard');

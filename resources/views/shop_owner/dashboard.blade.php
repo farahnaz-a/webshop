@@ -156,6 +156,7 @@
         <script src="{{ asset('dashboard_asset/lib/bootstrap/bootstrap.js') }}"></script>
         <script src="{{ asset('dashboard_asset/lib/perfect-scrollbar/js/perfect-scrollbar.jquery.js') }}"></script>
         <script src="{{ asset('dashboard_asset/js/starlight.js') }}"></script>
+        <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
         @yield('js')
 
 </body>

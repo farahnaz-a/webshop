@@ -48,12 +48,12 @@
     <div class="sl-logo" style="background: #fcb800">
         <a href=""><i class="icon ion-android-star-outline"></i> starlight</a></div>
     <div class="sl-sideleft">
-        <div class="input-group input-group-search">
+        {{-- <div class="input-group input-group-search">
             <input type="search" name="search" class="form-control" placeholder="Search">
             <span class="input-group-btn">
                 <button class="btn"><i class="fa fa-search"></i></button>
             </span><!-- input-group-btn -->
-        </div><!-- input-group -->
+        </div><!-- input-group --> --}}
 
         <label class="sidebar-label">View Website</label>
         <a href="#" class="sl-menu-link">
