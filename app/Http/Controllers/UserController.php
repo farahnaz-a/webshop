@@ -12,6 +12,7 @@ use Auth;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\Http;
+use Str;
 
 class UserController extends Controller
 {
@@ -39,7 +40,7 @@ class UserController extends Controller
 
       }
 
-      return view('shop_owner.index',compact('product','category_product','produt_by_category'));
+      return view('shop_owner.index',compact('product','shop','category_product','produt_by_category'));
     }
  
     public function product(){
@@ -67,6 +68,14 @@ class UserController extends Controller
             
     //   }
     //}
-
+ 
+  public function generateApi($id)
+  {
+    $shop = Shop::where('id',$id)->first();
+    $shop->token =  $shop->shop_name. '-' . Str::random(10);
+    $shop->save();
+    return redirect()->route('shops.index')->with('success','API key Created Successfully');
+  
+  }
 
 }

@@ -19,6 +19,15 @@ active
 
 <div>
     <div class="row">
+        <div class="col-6 m-auto">
+
+            <div class="form-group">
+                <label for="">Your API Key</label>
+            <input type="text" class="form-control" value="{{ $shop->token }}">
+            <a href="{{ route('generate.api', $shop->id) }}" class="btn btn-primary btn-sm mt-1">Regenerate key</a>
+            </div>
+            
+        </div>
         <div class="col-12">
             <div id="shopCount"></div>
         </div>
@@ -27,9 +36,41 @@ active
         <div class="col-6 ">
             <div id="category_count"></div>
         </div>
-        {{-- <div class="col-6 ">
-            <div id="extras_chart"></div>
-        </div> --}}
+    <div class="col-6 ">
+
+          
+            <table class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>API Call</th>
+                        <th>Redirection</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>
+                            <a target="_blank" href="{{ URL::to('/') }}/shop-api/api={Your_token_here}">{{ URL::to('/') }}/shop-api/api={Your_token_here}</a>
+                        </td>
+                        <td>Redirects to your shop details</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>
+                            <a target="_blank" href="{{ URL::to('/') }}/shop-api/products/api={Your_token_here}">{{ URL::to('/') }}/shop-api/products/api={Your_token_here}</a>
+                        </td>
+                        <td>Redirects to your product lists</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>
+                            <a target="_blank" href="{{ URL::to('/') }}/shop-api/product/{Your_product_id}/api={Your_token_here}">{{ URL::to('/') }}/shop-api/product/{Your_product_id}/api={Your_token_here}</a>
+                        </td>
+                        <td>Redirects to your product details</td>
+                    </tr>
+                </tbody>
+        </div> 
     </div>
 </div>
   

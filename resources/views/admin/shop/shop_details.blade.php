@@ -57,14 +57,17 @@ active
 
 
 <div class="row ">
-    <div class="col-md-4">
-        <div class="card" style="width: 18rem;">
+    <div class="col-6">
+        <div class="card">
             <div class="card-body">
                 <h5 class="card-title">Shop Details</h5>
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item"><img class="img-fluid" src="{{ asset('uploads/shop') }}/{{ $shop->image }}" alt="shop image"></li>
+                    <li class="list-group-item text-center"><img width="400px;" class="img-fluid text-center" src="{{ asset('uploads/shop') }}/{{ $shop->image }}" alt="shop image"></li>
                     <li class="list-group-item">
                         <strong>Owner Name:</strong> <span>{{ $shop->owner_name }}</span>
+                    </li>
+                    <li class="list-group-item">
+                        <strong>API SECRET:</strong> <span>{{ $shop->token }}</span> <a class="btn btn-info btn-sm text-right" onclick="alert('Are you sure?')" href="{{ route('generate.api', $shop->id) }}">Generate new key</a>
                     </li>
                     <li class="list-group-item">
                         <strong>Owner Email:</strong> <span>{{ $shop->email }}</span>
@@ -89,12 +92,47 @@ active
             </div>
         </div>
     </div>
+    <div class="col-6">
 
-    <div class="col-md-8">
+        <h4 class="text-center">API ROUTES</h4>
+          
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>API Call</th>
+                    <th>Redirection</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>
+                        <a target="_blank" href="{{ URL::to('/') }}/shop-api/api={Your_token_here}">{{ URL::to('/') }}/shop-api/api={Your_token_here}</a>
+                    </td>
+                    <td>Redirects to your shop details</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>
+                        <a target="_blank" href="{{ URL::to('/') }}/shop-api/products/api={Your_token_here}">{{ URL::to('/') }}/shop-api/products/api={Your_token_here}</a>
+                    </td>
+                    <td>Redirects to your product lists</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>
+                        <a target="_blank" href="{{ URL::to('/') }}/shop-api/product/{Your_product_id}/api={Your_token_here}">{{ URL::to('/') }}/shop-api/product/{Your_product_id}/api={Your_token_here}</a>
+                    </td>
+                    <td>Redirects to your product details</td>
+                </tr>
+            </tbody>
+    </div>
+    <div class="col-6">
         <table class="table">
             <thead>
               <tr>
-                <th scope="col">SL</th>
+                <th scope="col">Product ID</th>
                 <th scope="col">Product Name</th>
                 <th scope="col">Extras</th>
                 <th scope="col">Size</th>
@@ -106,7 +144,7 @@ active
             <tbody>
                 @foreach ($product as $item)
                 <tr>
-                    <td>{{ $loop->index + 1 }}</td>
+                    <td>{{ $item->id }}</td>
                     <td>{{ $item->product_name }}</td>
 
 

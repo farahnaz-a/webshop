@@ -10,6 +10,7 @@ use App\Models\User;
 use Carbon\Carbon;
 use GuzzleHttp\Promise\Create;
 use Illuminate\Http\Request;
+use Str;
 
 class ShopController extends Controller
 {
@@ -64,6 +65,8 @@ class ShopController extends Controller
 
         $shop = Shop::create($request->except('_token') + ['user_id' => $reg->id] + ['created_at' => Carbon::now()]);
 
+        $shop->token = $shop->shop_name. '-' . Str::random(10);
+
         $image = $request->file('image');
         $imageFullName = $shop->id. 'shop.' . $image->getClientOriginalExtension();
         $location = public_path('uploads/shop');
@@ -83,7 +86,7 @@ class ShopController extends Controller
     public function show($id)
     {
         $shop       = Shop::where('id',$id)->first();
-        $product    = Product::where('shop_id',$id)->orderBy('created_at', 'DESC')->get();
+        $product    = Product::where('shop_id',$id)->orderBy('created_at', 'asc')->get();
         $categories = Category::where('shop_id',$shop->id)->get();
         $extras     = ProductExtra::where('shop_id',$shop->id)->get();
         return view('admin.shop.shop_details',compact('shop','product','categories','extras'));

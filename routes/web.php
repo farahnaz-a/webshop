@@ -67,6 +67,7 @@ Route::get('getlist', [UserController::class, 'getlist']);
 Route::group(['prefix' => 'user','middleware' => ['auth','CheckUser']], function(){
 
     Route::get('/dashboard', [UserController::class, 'index'])->name('shop_owner.dashboard');
+    Route::get('/generate-api/{id}', [UserController::class, 'generateApi'])->name('generate.api');
 
 
     Route::get('/shop/products', [UserController::class, 'product'])->name('userProducts.index');
