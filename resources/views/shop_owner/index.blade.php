@@ -11,7 +11,7 @@ active
 
 @section('breadcrumb')
 <nav class="breadcrumb sl-breadcrumb">
-    <a class="breadcrumb-item" href="{{ route('shop_owner.dashboard') }}">Webshop</a>
+    <a class="breadcrumb-item" href="{{ route('shop_owner.dashboard') }}">Dashboard</a>
 </nav>
 @endsection
 
@@ -33,13 +33,11 @@ active
         </div>
     </div>
     <div class="row mt-4">
-        <div class="col-6 ">
+        <div class="col-lg-6 col-md-6 col-sm-12 m-auto ">
             <div id="category_count"></div>
         </div>
-    <div class="col-6 ">
-
-          
-            <table class="table table-bordered table-striped">
+    <div class="col-lg-6 col-md-12 col-sm-12 ">
+            <table class="table table-bordered table-striped table-responsive">
                 <thead>
                     <tr>
                         <th>#</th>

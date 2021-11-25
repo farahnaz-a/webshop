@@ -9,7 +9,7 @@
 active
 @endsection
 
-@section('breadcrumb')
+@section('content')
 <div class="container">
     <form action="{{ route('products.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
@@ -60,6 +60,11 @@ active
             </button>
         </div>
         @endif
+
+        @error('category_id')
+        <span class="text-danger">{{$message}}</span>
+        @enderror
+
         <div class="row">
             <div class="col-lg-4 col-sm-6" style="margin-top: 20px">
                 <div class="card h-100">
@@ -73,7 +78,7 @@ active
                                 <input type="text" for="product_name" name="product_name" class="form-control"
                                     placeholder="Product Name">
                             </div>
-                            @error('product_name')product_name
+                            @error('product_name')
                             <span class="text-danger">{{$message}}</span>
                             @enderror
                         </div>
@@ -364,7 +369,7 @@ active
 
     <div class="row mt-5">
         <div class="col-12">
-            <table class="table">
+            <table class="table table-responsive">
                 <thead>
                     <tr>
                         <th scope="col">SL</th>
@@ -628,6 +633,7 @@ active
                         <div>
                             <select required multiple name="extras_id[]" class="custom-select form-control" id="extras">
 
+                                <option value="">No extras</option>
                                 @foreach (extras($item->id) as $extra)
                                 <option selected value="{{ $extra->extra->id}}">{{ $extra->extra->extras_name}}</option>
                                 @endforeach

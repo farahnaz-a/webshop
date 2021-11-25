@@ -54,14 +54,14 @@
                 <button class="btn"><i class="fa fa-search"></i></button>
             </span><!-- input-group-btn -->
         </div><!-- input-group --> --}}
-
+{{-- 
         <label class="sidebar-label">View Website</label>
         <a href="#" class="sl-menu-link">
             <div class="sl-menu-item">
                 <i class="menu-item-icon icon ion-ios-email-outline tx-24"></i>
                 <span class="menu-item-label">View Website</span>
             </div><!-- menu-item -->
-        </a>
+        </a> --}}
 
 
        

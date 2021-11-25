@@ -46,22 +46,22 @@
 
     <!-- ########## START: LEFT PANEL ########## -->
     <div class="sl-logo" style="background: #fcb800">
-        <a href=""><i class="icon ion-android-star-outline"></i> starlight</a></div>
+        <a href=""><i class="icon ion-android-star-outline"></i> Webshop</a></div>
     <div class="sl-sideleft">
-        <div class="input-group input-group-search">
+        {{-- <div class="input-group input-group-search">
             <input type="search" name="search" class="form-control" placeholder="Search">
             <span class="input-group-btn">
                 <button class="btn"><i class="fa fa-search"></i></button>
             </span><!-- input-group-btn -->
-        </div><!-- input-group -->
+        </div><!-- input-group --> --}}
 
-        <label class="sidebar-label">View Website</label>
+        {{-- <label class="sidebar-label">View Website</label>
         <a href="#" class="sl-menu-link">
             <div class="sl-menu-item">
                 <i class="menu-item-icon icon ion-ios-email-outline tx-24"></i>
                 <span class="menu-item-label">View Website</span>
             </div><!-- menu-item -->
-        </a>
+        </a> --}}
 
 
        
@@ -91,10 +91,15 @@
         <div class="sl-header" style="background: #fcb800">
             <div class="sl-header-left">
                 <div class="navicon-left hidden-md-down" style="background: #fcb800">
-                    <a id="btnLeftMenu" href=""><i
-                            class="icon ion-navicon-round"></i></a></div>
-                <div class="navicon-left hidden-lg-up"><a id="btnLeftMenuMobile" href=""><i
-                            class="icon ion-navicon-round"></i></a></div>
+                    <a id="btnLeftMenu" href="">
+                        <i class="icon ion-navicon-round"></i>
+                    </a>
+                </div>
+                <div class="navicon-left hidden-lg-up">
+                    <a id="btnLeftMenuMobile" href="">
+                        <i class="icon ion-navicon-round"></i>
+                    </a>
+                </div>
             </div><!-- sl-header-left -->
             <div class="sl-header-right">
                 <nav class="nav">
@@ -104,7 +109,16 @@
                         </a>
                         <div class="dropdown-menu dropdown-menu-header wd-200">
                             <ul class="list-unstyled user-profile-nav">
-                                <li><a href="{{ url('user/profile') }}"><i class="icon ion-ios-person-outline"></i> Edit Profile</a></li>
+                                <li>
+                                    <a href="{{ route('user.profile') }}">
+                                        <i class="icon ion-ios-person-outline"></i> Edit Profile
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('shopDetails.index') }}">
+                                        <i class="icon ion-navicon-round"></i>Shop Details
+                                    </a>
+                                </li>
                                 <form method="POST" action="{{ route('logout') }}">
                                     @csrf
                                     <li>
@@ -114,18 +128,19 @@
                                         </a>
                                     </li>
                                 </form>
+                              
                             </ul>
                         </div><!-- dropdown-menu -->
                     </div><!-- dropdown -->
                 </nav>
-                <div class="navicon-right" style="background: #fcb800">
+                {{-- <div class="navicon-right" style="background: #fcb800">
                     <a id="btnRightMenu" href="" class="pos-relative">
                         <i class="icon ion-ios-bell-outline"></i>
                         <!-- start: if statement -->
                         <span class="square-8 bg-danger"></span>
                         <!-- end: if statement -->
                     </a>
-                </div><!-- navicon-right -->
+                </div><!-- navicon-right --> --}}
             </div><!-- sl-header-right -->
         </div><!-- sl-header -->
         <!-- ########## END: HEAD PANEL ########## -->

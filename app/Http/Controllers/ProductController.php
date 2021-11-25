@@ -56,20 +56,20 @@ class ProductController extends Controller
         $data->image = $filename;
         $data->update();
 
+   
 
-       
-
-        foreach ($request->extras_id as $item) 
+        if ($request->extras_id != null) 
         {
-         $extras = new Extra();
-         $extras->product_id = $data->id;
-         $extras->extras_id = $item;
-         $extras->save();
+            foreach ($request->extras_id as $item) 
+            {
+                $extras = new Extra();
+                $extras->product_id = $data->id;
+                $extras->extras_id = $item;
+                $extras->save();
+            }
         }
-        
        
-
-        return redirect()->route('userProducts.index')->with('product_success','Add Product Successfully');
+        return back()->with('product_success','Add Product Successfully');
     }
 
     /**
@@ -103,6 +103,7 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
+
       
         $request->validate([
 
@@ -136,18 +137,31 @@ class ProductController extends Controller
             $value->delete();
         }
         
-        foreach ($request->extras_id as $item) 
+        
+        if ($request->extras_id != null) 
         {
-         $extras = new Extra();
-         $extras->product_id = $data->id;
-         $extras->extras_id = $item;
-         $extras->save();
+            foreach ($request->extras_id as $item) 
+            {
+               if ($item != null) {
+                $extras = new Extra();
+                $extras->product_id = $data->id;
+                $extras->extras_id = $item;
+                $extras->save();
+               }
+            }
         }
+        // foreach ($request->extras_id as $item) 
+        // {
+        //  $extras = new Extra();
+        //  $extras->product_id = $data->id;
+        //  $extras->extras_id = $item;
+        //  $extras->save();
+        // }
 
        
        
 
-        return redirect()->route('userProducts.index')->with('product_success','Add Product Successfully');
+        return back()->with('product_success','Add Product Successfully');
     }
 
     /**
@@ -167,6 +181,6 @@ class ProductController extends Controller
             $value->delete();
         }
 
-        return redirect()->route('userProducts.index')->with('product_delete','Deleted Product Successfully');
+        return back()->with('product_delete','Deleted Product Successfully');
     }
 }

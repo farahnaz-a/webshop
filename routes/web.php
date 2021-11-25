@@ -2,11 +2,13 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AdminProfileController;
+use App\Http\Controllers\UserProfileController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProductExtraController;
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\UserShopDetailsController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -30,7 +32,6 @@ Route::get('/', function () {
 Route::get('/register', function () {
     return redirect()->back();
 });
-
 //Admin Controller
 Route::group(['prefix' => 'admin','middleware' => ['auth','CheckAdmin']], function(){
 
@@ -43,10 +44,10 @@ Route::group(['prefix' => 'admin','middleware' => ['auth','CheckAdmin']], functi
 
 
     //Admin Profile
-    Route::get('/profile/index', [AdminProfileController::class, 'index'])->name('admin.profile');
+    Route::get('/profile/index',       [AdminProfileController::class, 'index'])->name('admin.profile');
     Route::post('/profile/image/{id}', [AdminProfileController::class, 'updateImage'])->name('admin.profileimage');
-    Route::post('/profile/info/{id}', [AdminProfileController::class, 'updateinfo'])->name('admin.profileinfo');
-    Route::post('/profile/password', [AdminProfileController::class, 'updatepassword'])->name('admin.profilepassword');
+    Route::post('/profile/info/{id}',  [AdminProfileController::class, 'updateinfo'])->name('admin.profileinfo');
+    Route::post('/profile/password',   [AdminProfileController::class, 'updatepassword'])->name('admin.profilepassword');
 
     // Route::get('/shop/products/{name}', [AdminProductController::class, 'index'])->name('products.index');
 
@@ -64,7 +65,7 @@ Route::group(['prefix' => 'admin','middleware' => ['auth','CheckAdmin']], functi
 
 Route::get('getlist', [UserController::class, 'getlist']);
 //Admin Controller
-Route::group(['prefix' => 'user','middleware' => ['auth','CheckUser']], function(){
+Route::group(['prefix' => 'user','middleware' => ['auth']], function(){
 
     Route::get('/dashboard', [UserController::class, 'index'])->name('shop_owner.dashboard');
     Route::get('/generate-api/{id}', [UserController::class, 'generateApi'])->name('generate.api');
@@ -82,6 +83,15 @@ Route::group(['prefix' => 'user','middleware' => ['auth','CheckUser']], function
 
     Route::get('extra/delete/{id}',[ProductExtraController::class, 'destroy'])->name('extra.delete');
 
+    
+    //User Profile
+    Route::get('/profile/index',       [UserProfileController::class, 'index'])->name('user.profile');
+    Route::post('/profile/image/{id}', [UserProfileController::class, 'updateImage'])->name('user.profileimage');
+    Route::post('/profile/info/{id}',  [UserProfileController::class, 'updateinfo'])->name('user.profileinfo');
+    Route::post('/profile/password',   [UserProfileController::class, 'updatepassword'])->name('user.profilepassword');
+
+    //Shop Details
+    Route::resource('shopDetails', UserShopDetailsController::class);
 });
 
 

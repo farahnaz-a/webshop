@@ -25,10 +25,10 @@ active
             </div>
         </div>
         <div class="row mt-3">
-            <div class="col-6 ">
-                <div id="prudut_count"></div>
+            <div class="col-lg-6 col-md-6 col-sm-12 m-auto">
+                <div id="produt_count"></div>
             </div>
-            <div class="col-6 ">
+            <div class="col-lg-6 col-md-12 col-sm-12 ">
                 <div id="pruduct_sell"></div>
             </div>
         </div>
@@ -145,7 +145,7 @@ active
         }]
         };
 
-        var chart = new ApexCharts(document.querySelector("#prudut_count"), options);
+        var chart = new ApexCharts(document.querySelector("#produt_count"), options);
         chart.render();
 
 

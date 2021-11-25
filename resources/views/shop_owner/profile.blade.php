@@ -1,8 +1,8 @@
-@extends('admin.dashboard')
+@extends('shop_owner.dashboard')
 
 
 @section('title')
-{{ config('app.name') }} | Admin Dashboard
+{{ config('app.name') }} | User Dashboard
 @endsection
 
 {{-- @section('dashboard')
@@ -11,7 +11,7 @@ active
 
 @section('breadcrumb')
 <nav class="breadcrumb sl-breadcrumb">
-    <a class="breadcrumb-item" href="{{ route('admin.dashboard')}}">Dashboard</a>
+    <a class="breadcrumb-item" href="{{ route('shop_owner.dashboard')}}">Dashboard</a>
     <span class="breadcrumb-item active">User Profile</span>
 </nav>
 @endsection
@@ -73,7 +73,7 @@ active
         <div class="card h-100 mx-auto" style="max-width: 22rem;">
             <div class="card-body d-flex flex-column">
                 <h5 class="card-title">Update Profile Image</h5>
-                <form class="d-flex flex-column h-100" action="{{ route('admin.profileimage',Auth::user()->id) }}" method="POST"
+                <form class="d-flex flex-column h-100" action="{{ route('user.profileimage',Auth::user()->id) }}" method="POST"
                     enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">
@@ -102,7 +102,7 @@ active
         <div class="card h-100 mx-auto" style="max-width: 22rem;">
             <div class="card-body d-flex flex-column">
                 <h5 class="card-title">Update user info</h5>
-                <form class="d-flex flex-column h-100" method="POST" action="{{ route('admin.profileinfo',Auth::user()->id) }}" enctype="multipart/form-data">
+                <form class="d-flex flex-column h-100" method="POST" action="{{ route('user.profileinfo',Auth::user()->id) }}" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">
                         <label for="name">Name</label>
@@ -127,7 +127,7 @@ active
         <div class="card h-100 mx-auto" style="max-width: 22rem;">
             <div class="card-body d-flex flex-column">
                 <h5 class="card-title">Update password</h5>
-                <form class="d-flex flex-column" method="POST" action="{{ route('admin.profilepassword') }}" enctype="multipart/form-data">
+                <form class="d-flex flex-column" method="POST" action="{{ route('user.profilepassword') }}" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">
                         <label for="current_password">Current Password</label>
