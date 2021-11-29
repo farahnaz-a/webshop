@@ -66,4 +66,81 @@ class ShopController extends Controller
         }
         
     }
+
+    public function categories($token)
+    {
+
+        $shop = Shop::where('token', $token)->first();
+       
+        if($shop)
+        {
+            return $shop->categories;
+        }
+        else
+        {
+            return "Shop Does not exist or Wrong API key";
+        }
+
+    }
+
+    public function categoryDetails($id,$token)
+    {
+        $shop = Shop::where('token', $token)->first();
+       
+        if($shop)
+        {
+            $category = $shop->categories->find($id);
+            if($category)
+            {
+                return $category;
+            }
+            else
+            {
+                return "Category Does not exist or Wrong API Key";
+            }
+         
+
+        }
+        else
+        {
+            return "Shop Does not exist or Wrong API key";
+        }
+    }
+
+
+    public function extras($token)
+    {
+        $shop = Shop::where('token', $token)->first();
+       
+        if($shop)
+        {
+            return $shop->extras;
+        }
+        else
+        {
+            return "Shop Does not exist or Wrong API key";
+        }
+    }
+
+    public function extraDetails($id,$token)
+    {
+        $shop = Shop::where('token', $token)->first();
+       
+        if($shop)
+        {
+            $extra = $shop->extras->find($id);
+            if($extra)
+            {
+                return $extra;
+            }
+            else
+            {
+                return "Extra Does not exist or Wrong API Key";
+            }
+        }
+        else
+        {
+            return "Shop Does not exist or Wrong API key";
+        }
+    }
 }

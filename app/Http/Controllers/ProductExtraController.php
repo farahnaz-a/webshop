@@ -39,7 +39,7 @@ class ProductExtraController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'extras_name'  => 'required|unique:product_extras',
+            'extras_name'  => 'required',
             'price' => 'required',
         ]);
 

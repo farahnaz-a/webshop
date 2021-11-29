@@ -131,12 +131,44 @@ active
                     <td>Redirects to your product lists</td>
                 </tr>
                 <tr>
-                    <td>2</td>
+                    <td>3</td>
                     <td>
                         <a target="_blank"
                             href="{{ URL::to('/') }}/shop-api/product/{Your_product_id}/api={Your_token_here}">{{ URL::to('/') }}/shop-api/product/{Your_product_id}/api={Your_token_here}</a>
                     </td>
                     <td>Redirects to your product details</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>
+                        <a target="_blank"
+                            href="{{ URL::to('/') }}/shop-api/categories/api={Your_token_here}">{{ URL::to('/') }}/shop-api/categories/api={Your_token_here}</a>
+                    </td>
+                    <td>Redirects to your product categories</td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>
+                        <a target="_blank"
+                            href="{{ URL::to('/') }}/shop-api/category-details/{Your_category_id}/api={Your_token_here}">{{ URL::to('/') }}/shop-api/category-details/{Your_category_id}/api={Your_token_here}</a>
+                    </td>
+                    <td>Redirects to your category details</td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td>
+                        <a target="_blank"
+                            href="{{ URL::to('/') }}/shop-api/extras/api={Your_token_here}">{{ URL::to('/') }}/shop-api/extras/api={Your_token_here}</a>
+                    </td>
+                    <td>Redirects to your product categories</td>
+                </tr>
+                <tr>
+                    <td>7</td>
+                    <td>
+                        <a target="_blank"
+                            href="{{ URL::to('/') }}/shop-api/extra-details/{Your_extra_id}/api={Your_token_here}">{{ URL::to('/') }}/shop-api/extra-details/{Your_extra_id}/api={Your_token_here}</a>
+                    </td>
+                    <td>Redirects to your category details</td>
                 </tr>
             </tbody>
         </table>
