@@ -170,6 +170,14 @@ active
                     </td>
                     <td>Redirects to your category details</td>
                 </tr>
+                <tr>
+                    <td>8</td>
+                    <td>
+                        <a target="_blank"
+                            href="{{ URL::to('/') }}/shop-api/extra-products/{Your_product_id}/api={Your_token_here}">{{ URL::to('/') }}shop-api/extra-products/{Your_product_id}/api={Your_token_here}</a>
+                    </td>
+                    <td>Redirects to your category details</td>
+                </tr>
             </tbody>
         </table>
     </div>

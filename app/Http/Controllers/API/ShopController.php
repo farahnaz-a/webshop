@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\API;
 
 use App\Models\Shop;
+use App\Models\Extra;
+use App\Models\ProductExtra;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -137,6 +139,45 @@ class ShopController extends Controller
             {
                 return "Extra Does not exist or Wrong API Key";
             }
+        }
+        else
+        {
+            return "Shop Does not exist or Wrong API key";
+        }
+    }
+
+    public function extraProducts($id, $token)
+    {
+    
+        $shop = Shop::where('token', $token)->first();
+       
+        if($shop)
+        {
+           $product = Extra::where('product_id', $id)->get();
+
+            if($product)
+            {
+                 foreach($product as $item)
+                 {
+                    $extras[] =  Extra::where('product_id', $id)->get();
+                 }
+                foreach($extras as $extra)
+                {
+                   foreach($extra as $item)
+                   {
+                      $test[] =  $item->extras_id;
+                   }
+                   $productExtras = ProductExtra::findMany($test);
+                    
+                }
+                return $productExtras;
+            }
+            else
+            {
+                return "Product Does not exist or Wrong API Key";
+            }
+
+
         }
         else
         {

@@ -13,3 +13,5 @@ Route::get('/categories/api={token}', [ShopController::class, 'categories']);
 Route::get('/category-details/{id}/api={token}', [ShopController::class, 'categoryDetails']); 
 Route::get('/extras/api={token}', [ShopController::class, 'extras']);
 Route::get('/extra-details/{id}/api={token}', [ShopController::class, 'extraDetails']);
+
+Route::get('/extra-products/{id}/api={token}', [ShopController::class, 'extraProducts']);
